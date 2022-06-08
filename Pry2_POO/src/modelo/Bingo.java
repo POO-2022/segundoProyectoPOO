@@ -2,19 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package control;
-
-import java.util.ArrayList;
-import modelo.Bola;
+package modelo;
 
 /**
  *
- * @author Ing. Kevin
+ * @author Andy Porras
  */
-public class Tombola {
-  private ArrayList<Bola> bolas;   
-  
-  public Tombola(){
-      
+public class Bingo {
+
+  public Bingo(String pTipo, String pNumerosCantados, String pGanadores, String pFecha, String pHora) {
+
   }
+
 }

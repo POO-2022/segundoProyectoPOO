@@ -4,10 +4,15 @@
  */
 package dao;
 
+import java.util.ArrayList;
+
+import modelo.Bingo;
+
 /**
  *
  * @author Andy Porras
  */
 public interface BingoDAO {
-    
+  public abstract boolean registrarBingo(Bingo pBingo);
+  public abstract ArrayList<Bingo> cargarBingos();
 }
