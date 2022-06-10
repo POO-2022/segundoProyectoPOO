@@ -47,7 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setText("El Gran Bingo ");
 
-        btSalir.setBackground(new java.awt.Color(0, 204, 0));
+        btSalir.setBackground(new java.awt.Color(255, 0, 0));
         btSalir.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btSalir.setText("Salir");
         btSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +56,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btRegistrarJugador.setBackground(new java.awt.Color(0, 204, 0));
+        btRegistrarJugador.setBackground(new java.awt.Color(102, 102, 255));
         btRegistrarJugador.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btRegistrarJugador.setText("Registrar Jugador");
         btRegistrarJugador.addActionListener(new java.awt.event.ActionListener() {
@@ -65,25 +65,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btVerCarton.setBackground(new java.awt.Color(0, 204, 0));
+        btVerCarton.setBackground(new java.awt.Color(153, 153, 255));
         btVerCarton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btVerCarton.setText("Ver Carton");
 
-        btGenerarCartones.setBackground(new java.awt.Color(0, 204, 0));
+        btGenerarCartones.setBackground(new java.awt.Color(153, 153, 255));
         btGenerarCartones.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btGenerarCartones.setText("Generar Cartones");
 
-        btEnviarCarton.setBackground(new java.awt.Color(0, 204, 0));
+        btEnviarCarton.setBackground(new java.awt.Color(153, 153, 255));
         btEnviarCarton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btEnviarCarton.setText("Enviar Carton");
 
-        btGenerarEstadisticas.setBackground(new java.awt.Color(0, 204, 0));
+        btGenerarEstadisticas.setBackground(new java.awt.Color(153, 153, 255));
         btGenerarEstadisticas.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btGenerarEstadisticas.setText("Generar Estadisticas");
 
         btJugar.setBackground(new java.awt.Color(0, 204, 0));
         btJugar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btJugar.setText("Iniciar Juego");
+        btJugar.setText("Jugar Bingo");
         btJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btJugarActionPerformed(evt);
@@ -108,7 +108,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGenerarEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(btGenerarEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, Short.MAX_VALUE)
                             .addComponent(btEnviarCarton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(160, 160, 160))
