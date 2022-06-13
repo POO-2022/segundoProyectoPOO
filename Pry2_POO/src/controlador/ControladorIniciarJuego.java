@@ -15,6 +15,7 @@ import modelo.Bingo;
 import modelo.Carton;
 import modelo.Jugador;
 import vista.IniciarJuego;
+import vista.Jugando;
 import vista.MenuPrincipal;
 
 /**
@@ -47,19 +48,24 @@ public class ControladorIniciarJuego implements ActionListener {
         cerrarVentanaIniciarJuego();
         break;
       case "Jugar":
-        //  
+        ventanaJuego(); 
         break;
       default:
         break;
     }
   }
 
+  private void ventanaJuego() {
+    vista.setVisible(false);
+    Jugando vistaJuego = new Jugando();
+    ControladorJugando controladorJugando = new ControladorJugando(vistaJuego,jugadores,cartones,vista);
+    controladorJugando.vista.setVisible(true);
+    controladorJugando.vista.setLocationRelativeTo(null);
+  }
+
   private void cerrarVentanaIniciarJuego() {
-    vista.dispose();
-    ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vistaAnterior, jugadores,
-        cartones);
-    controladorVentanaPrincipal.vista.setVisible(true);
-    controladorVentanaPrincipal.vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    vista.setVisible(false);
+    vistaAnterior.setVisible(true);
   }
 
 }

@@ -73,16 +73,16 @@ public class ControladorVentanaPrincipal implements ActionListener {
     }
   }
   private void abrirVentanaIniciarJuego() {
-    if (cartones.size() == 0) {
-      JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
-    } else {
+    // if (cartones.size() == 0) {
+    //   JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
+    // } else {
       vista.setVisible(false);
       IniciarJuego vistaIniciarJuego = new IniciarJuego();
       ControladorIniciarJuego controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
       controladorIniciarJuego.vista.setVisible(true);
       controladorIniciarJuego.vista.setLocationRelativeTo(null);
       
-    }   
+    //}   
   }
   public void cerrarVentanaLogin(){
     this.vista.dispose();
