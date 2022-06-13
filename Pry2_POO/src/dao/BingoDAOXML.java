@@ -115,7 +115,7 @@ public class BingoDAOXML implements BingoDAO {
           String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
           String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
           
-          bingos.add(new Bingo(tipo, numerosCantados, ganadores, fecha, hora));
+          //bingos.add(new Bingo(tipo, numerosCantados, ganadores, fecha, hora));
           // String nombre = eElement.getElementsByTagName("Nombre").item(0).getTextContent();
           // String contrasena = eElement.getElementsByTagName("Contraseña").item(0).getTextContent();
 

@@ -172,7 +172,7 @@ public class IniciarJuego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btJugarBingo;
+    public javax.swing.JButton btJugarBingo;
     public javax.swing.JButton btRegresarMenuPrincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

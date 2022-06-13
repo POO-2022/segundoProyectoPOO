@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "Pry2_POO/src/pry2_poo/javax.mail.jar"
+        "Pry2_POO/src/pry2_poo/javax.mail.jar",
+        "Pry2_POO/lib/javax.mail-1.6.2.jar"
     ]
 }

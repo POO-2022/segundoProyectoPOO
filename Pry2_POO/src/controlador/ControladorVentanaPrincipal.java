@@ -8,11 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import dao.BingoDAOXML;
 import modelo.Carton;
 import modelo.Jugador;
+import vista.IniciarJuego;
 import vista.MenuPrincipal;
-import vista.VtMenuPrincipal;
 
 /**
  *
@@ -57,8 +59,8 @@ public class ControladorVentanaPrincipal implements ActionListener {
       case "Generar Cartones":
         //
         break;
-      case "Jugar Juego":
-        //
+      case "Jugar Bingo":
+        abrirVentanaIniciarJuego();
         break;
       case "Registrar Jugador":
         //
@@ -69,6 +71,18 @@ public class ControladorVentanaPrincipal implements ActionListener {
       default:
         break;  
     }
+  }
+  private void abrirVentanaIniciarJuego() {
+    if (cartones.size() == 0) {
+      JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+      vista.setVisible(false);
+      IniciarJuego vistaIniciarJuego = new IniciarJuego();
+      ControladorIniciarJuego controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
+      controladorIniciarJuego.vista.setVisible(true);
+      controladorIniciarJuego.vista.setLocationRelativeTo(null);
+      
+    }   
   }
   public void cerrarVentanaLogin(){
     this.vista.dispose();
