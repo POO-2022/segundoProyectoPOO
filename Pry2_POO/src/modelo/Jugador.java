@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 /**
  *
  * @author Kevin Salazar
@@ -25,7 +27,7 @@ public class Jugador {
     setCorreo(pCorreo);
     setCedula(pCedula);
   }  
-
+  //metodos accesores
   public String getNombre() {
     return nombre;
   }
@@ -48,5 +50,16 @@ public class Jugador {
 
   public void setCedula(int pCedula) {
     this.cedula = pCedula;
+  }
+  
+  /**Valida que un correo este correctamente escrito
+   * 
+   * @param correo el correo a validar
+   * @return true si es valido, false sino
+   */
+  public boolean validarCorreo(String correo){
+      Pattern p = Pattern.compile("^[_a-z0-9-\\+]+(\\.[_a-z0-9-]+)*@"+ "[a-z0-9-]+(\\.[a-z0-9]+)*(\\.[a-z]{2,4})$");
+      Matcher m = p.matcher(correo);
+      return m.matches();
   }
 }
