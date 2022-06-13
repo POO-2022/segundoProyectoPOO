@@ -6,6 +6,7 @@ package modelo;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.ArrayList;
 /**
  *
  * @author Kevin Salazar
@@ -15,6 +16,7 @@ public class Jugador {
   private String nombre;
   private String correo;
   private int cedula;
+  private ArrayList<Carton> cartones;
   
   /**
    * Constructor principal de la clase
@@ -26,6 +28,7 @@ public class Jugador {
     setNombre(pNombre);
     setCorreo(pCorreo);
     setCedula(pCedula);
+    cartones = new ArrayList<Carton>();
   }  
   //metodos accesores
   public String getNombre() {
@@ -52,6 +55,19 @@ public class Jugador {
     this.cedula = pCedula;
   }
   
+  /**agrega cartones al jugador
+   * se permite un max de 5 cartones por jugador 
+   * @param pCarton el carton a asignar
+   * @return true si se agregó, false sino
+   */
+  public boolean addCarton(Carton pCarton){
+    if(cartones.size()<5 && !pCarton.isAsignado()){
+      cartones.add(pCarton);
+      return true;
+    }
+    return false;
+  }
+
   /**Valida que un correo este correctamente escrito
    * 
    * @param correo el correo a validar
