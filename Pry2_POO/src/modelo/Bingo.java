@@ -32,6 +32,12 @@ public class Bingo {
   }
 
   public void addCarton(Carton pCarton){
+    //verificar que no se repitan IDs de cartones
+    for(Carton act: cartones){
+      if(act.getID().equals(pCarton.getID())){
+        return;
+      }
+    }
     cartones.add(pCarton);
   }
 

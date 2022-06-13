@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
-
+import java.util.Random;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +28,14 @@ public class Carton {
 
   //se asigna automáticamente
   public void setID(){
-
+    ID="";
+    Random r = new Random();  
+    ID+=(char) (r.nextInt(26) + 'A');
+    ID+=(char) (r.nextInt(26) + 'A');
+    ID+=(char) (r.nextInt(26) + 'A');
+    ID+=(char) (r.nextInt(9) + 48);
+    ID+=(char) (r.nextInt(9) + 48);
+    ID+=(char) (r.nextInt(9) + 48);
   }
   public String getID(){
       return ID;
