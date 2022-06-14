@@ -15,6 +15,7 @@ import modelo.Carton;
 import modelo.Jugador;
 import vista.IniciarJuego;
 import vista.MenuPrincipal;
+import vista.RegistrarJugador;
 
 /**
  *
@@ -63,7 +64,7 @@ public class ControladorVentanaPrincipal implements ActionListener {
         abrirVentanaIniciarJuego();
         break;
       case "Registrar Jugador":
-        //
+        registrarJugador();
         break;
       case "Generar Estadisticas":
         //
@@ -72,6 +73,15 @@ public class ControladorVentanaPrincipal implements ActionListener {
         break;  
     }
   }
+  private void registrarJugador() {
+    vista.setVisible(false);
+    RegistrarJugador vistaRegistrarJugador = new RegistrarJugador();
+    ControladorRegistrarJugador controladorRegistrarJugador = new ControladorRegistrarJugador(vistaRegistrarJugador, jugadores, cartones,vista);
+    controladorRegistrarJugador.vista.setVisible(true);
+    controladorRegistrarJugador.vista.setLocationRelativeTo(null);
+  }
+
+
   private void abrirVentanaIniciarJuego() {
     // if (cartones.size() == 0) {
     //   JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
@@ -81,8 +91,7 @@ public class ControladorVentanaPrincipal implements ActionListener {
       ControladorIniciarJuego controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
       controladorIniciarJuego.vista.setVisible(true);
       controladorIniciarJuego.vista.setLocationRelativeTo(null);
-      
-    //}   
+    // }   
   }
   public void cerrarVentanaLogin(){
     this.vista.dispose();

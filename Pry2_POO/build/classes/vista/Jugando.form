@@ -42,6 +42,9 @@
           <Color blue="cc" green="ff" red="99" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="Jugando_jPanel1"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
