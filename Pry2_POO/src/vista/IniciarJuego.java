@@ -40,7 +40,12 @@ public class IniciarJuego extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
 
-        tipoDeJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoDeJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugar en X", "Jugar en L", "Cuatro Esquinas", "Carton Lleno", "Jugar en Z" }));
+        tipoDeJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoDeJuegoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(0, 153, 153));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 15)); // NOI18N
@@ -90,8 +95,8 @@ public class IniciarJuego extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tipoDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addComponent(tipoDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(premioDelJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,6 +140,10 @@ public class IniciarJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tipoDeJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDeJuegoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoDeJuegoActionPerformed
 
     /**
      * @param args the command line arguments

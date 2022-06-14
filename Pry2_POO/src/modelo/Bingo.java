@@ -75,23 +75,23 @@ public class Bingo {
    * @param pIDJugador: el numero de cedula del jugador
    */
 
-   public void enviarCartonAJugador(String pIDCarton, int pIDJugador){
-    Carton carton;
+  public boolean enviarCartonAJugador(String pIDCarton, int pIDJugador){
+    Carton carton=null;
+    
+    //buscar el carton en la lista de cartones
     for(Carton actual: cartones){
       if(actual.getID().equals(pIDCarton)){
-        carton = actual;
-        break;
-      }
-    }
-    for(Jugador actual: jugadores){
-      if(actual.getCedula() == pIDJugador){
-        if(actual.addCarton(pCarton)){
-          carton.setAsignado(true);
-          return;
-        }else{
-          return;
+        //buscar al jugador  
+        for(Jugador j: jugadores){
+          if(j.getCedula() == pIDJugador){
+            //asignar el carton  
+            if(j.addCarton(carton)){
+              actual.setAsignado();
+              return true;
+            }
+          }
         }
       }
-    }
-   }
+    }return false;
+  }
 }
