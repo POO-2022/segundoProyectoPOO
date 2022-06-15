@@ -52,7 +52,7 @@ public class ControladorVentanaPrincipal implements ActionListener {
         cerrarVentanaLogin();
         break;
       case "Enviar Carton":
-        //
+        System.out.print(jugadores.size());
         break;
       case "Ver Carton":
         //
@@ -95,6 +95,7 @@ public class ControladorVentanaPrincipal implements ActionListener {
   }
   public void cerrarVentanaLogin(){
     this.vista.dispose();
+    System.exit(0);
   }
 
 }

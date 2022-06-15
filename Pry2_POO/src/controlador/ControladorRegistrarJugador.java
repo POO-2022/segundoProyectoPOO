@@ -79,6 +79,7 @@ public class ControladorRegistrarJugador implements ActionListener {
         j.setCedula(cedula);
         j.setCorreo(correo);
         j.setNombre(nombre);
+        jugadores.add(j);
         
         //falta que se guarde en toda la cuestion del csv, se asignen cartones, se guarde en el arraylist...
         
