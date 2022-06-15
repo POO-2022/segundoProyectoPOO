@@ -11,12 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.*;
 import javax.mail.internet.*;
-
+import javax.activation.*;
 /**
  * Funcion de envio de correos mediante java
  * 
  * @author KEVIN SALAZAR
- * @version 6.0
+ * @version 10.4
  */
 public class Email {
   private static final String CORREO = "javamailcorreos@gmail.com";
