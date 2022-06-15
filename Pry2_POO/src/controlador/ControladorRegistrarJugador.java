@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import vista.MenuPrincipal;
 import vista.RegistrarJugador;
 import modelo.Bingo;
@@ -57,7 +58,35 @@ public class ControladorRegistrarJugador implements ActionListener {
         break;
     }
   }
+  /**
+   * Registra al jugador
+   */
   private void registrarJugador() {
+    if(!vista.validarVacios()){
+      String nombre = vista.getNombre();
+      String correo = vista.getCorreo();
+      Integer cedula = vista.getCedula();
+      Jugador j = new Jugador();
+      if(cedula==-1){
+          JOptionPane.showMessageDialog(null, "La cédula debe ser un número", "Atención", JOptionPane.WARNING_MESSAGE);
+          return;
+      }
+      if(!j.validarCorreo(correo)){
+        JOptionPane.showMessageDialog(null, "Correo no válido", "Atención", JOptionPane.WARNING_MESSAGE);
+        return;
+      }
+      else{
+        j.setCedula(cedula);
+        j.setCorreo(correo);
+        j.setNombre(nombre);
+        
+        //falta que se guarde en toda la cuestion del csv, se asignen cartones, se guarde en el arraylist...
+        
+        JOptionPane.showMessageDialog(null, "¡Registrado exitosamente!");
+        cerrarVentanaRegistrarJugador();
+      }
+    }
+    return;
   }
   private void cerrarVentanaRegistrarJugador() {
     this.vista.setVisible(false);

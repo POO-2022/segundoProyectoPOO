@@ -18,6 +18,10 @@ public class Jugador {
   private int cedula;
   private ArrayList<Carton> cartones;
   
+  public Jugador(){
+      
+  }
+  
   /**
    * Constructor principal de la clase
    * @param pNombre Nombre del jugador

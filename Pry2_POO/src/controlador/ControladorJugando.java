@@ -24,13 +24,15 @@ public class ControladorJugando implements ActionListener {
   ArrayList<Carton> cartones;
   IniciarJuego vistaAnterior;
 
-  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones, IniciarJuego pVistaAnterior) {
+  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones, IniciarJuego pVistaAnterior, String tipo, int premio) {
     vista = pJugador;
     this.jugadores = pJugadores;
     this.cartones = pCartones;
     this.vistaAnterior = pVistaAnterior;
     vista.btCantarNumero.addActionListener(this);
     vista.btRegresarIniciarJuego.addActionListener(this);
+    vista.setPremio(premio);
+    vista.setTipoJuego(tipo);
   }
 
   @Override

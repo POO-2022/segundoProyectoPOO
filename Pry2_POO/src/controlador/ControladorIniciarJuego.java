@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import dao.BingoDAOXML;
+import javax.swing.JOptionPane;
 import modelo.Bingo;
 import modelo.Carton;
 import modelo.Jugador;
@@ -56,9 +57,16 @@ public class ControladorIniciarJuego implements ActionListener {
   }
 
   private void ventanaJuego() {
+    //validar que el premio esté correctamente escrito}
+    int premio = vista.getPremio();
+    String tipo = vista.getTipo();
+    if(premio<50000){
+      JOptionPane.showMessageDialog(null, "El premio debe ser un número mayor o igual a 50 000", "Error", JOptionPane.ERROR_MESSAGE);   
+      return;
+    }
     vista.setVisible(false);
     Jugando vistaJuego = new Jugando();
-    ControladorJugando controladorJugando = new ControladorJugando(vistaJuego,jugadores,cartones,vista);
+    ControladorJugando controladorJugando = new ControladorJugando(vistaJuego,jugadores,cartones,vista, tipo, premio);
     controladorJugando.vista.setVisible(true);
     controladorJugando.vista.setLocationRelativeTo(null);
   }

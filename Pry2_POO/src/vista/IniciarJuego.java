@@ -16,6 +16,20 @@ public class IniciarJuego extends javax.swing.JFrame {
     public IniciarJuego() {
         initComponents();
     }
+    
+    public int getPremio(){
+      try{
+        String s = premioDelJuego.getText();
+        return Integer.valueOf(s);
+      }catch(Exception e){
+        return -1;
+      }    
+    }
+    
+    public String getTipo(){
+      System.out.println(tipoDeJuego.getSelectedItem());  
+      return (String)tipoDeJuego.getSelectedItem();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +85,11 @@ public class IniciarJuego extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 204, 255));
         jLabel4.setText("Premio del Juego: ");
 
-        premioDelJuego.setText("Premio");
+        premioDelJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                premioDelJuegoActionPerformed(evt);
+            }
+        });
 
         btRegresarMenuPrincipal.setBackground(new java.awt.Color(255, 51, 51));
         btRegresarMenuPrincipal.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -144,6 +162,10 @@ public class IniciarJuego extends javax.swing.JFrame {
     private void tipoDeJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoDeJuegoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoDeJuegoActionPerformed
+
+    private void premioDelJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_premioDelJuegoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_premioDelJuegoActionPerformed
 
     /**
      * @param args the command line arguments

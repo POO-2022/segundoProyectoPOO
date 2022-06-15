@@ -1,11 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
-
-
-
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +18,8 @@ public class Email {
   /**
    * Constructor principal de la clase Email
    */
-  public Email() {
-
+  public Email(String pDireccion, String pAsunto, String pMensaje) throws MessagingException {
+    enviarEmail(pDireccion, pAsunto, pMensaje);  
   }
 
   // metodos accesores
@@ -45,8 +38,7 @@ public class Email {
    * @param subject   Encabezado del correo
    * @param message   Cuerpo o mensaje del correo
    */
-  public static void enviarEmail(String toAddress, String subject, String message)
-      throws AddressException, MessagingException {
+  public static void enviarEmail(String pDireccion, String pAsunto, String pMensaje) throws AddressException, MessagingException {
     try {
       // seteo de propiedades de red y puerto SMTP
       Properties properties = new Properties();
@@ -60,11 +52,11 @@ public class Email {
       // creacion del correo
       Message msg = new MimeMessage(session);
       msg.setFrom(new InternetAddress(getCORREO()));
-      InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
+      InternetAddress[] toAddresses = { new InternetAddress(pDireccion) };
       msg.setRecipients(Message.RecipientType.TO, toAddresses);
-      msg.setSubject(subject);
-      msg.setSentDate(new Date()); // fecha de envio
-      msg.setText(message);
+      msg.setSubject(pAsunto);
+      msg.setSentDate(new Date());
+      msg.setText(pMensaje);
 
       // Envio de email
       Transport t = session.getTransport("smtp");

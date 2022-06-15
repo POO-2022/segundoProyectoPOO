@@ -155,11 +155,11 @@ public class Jugando extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(46, 46, 46)
-                                .addComponent(elPremioDeJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(elPremioDeJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,6 +220,14 @@ public class Jugando extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setTipoJuego(String text){
+      elTipoDeJuego.setText(text);
+    }
+    
+    public void setPremio(int premio){
+      elPremioDeJuego.setText(String.valueOf(premio));
+    }
+    
     private void btCantarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCantarNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btCantarNumeroActionPerformed
