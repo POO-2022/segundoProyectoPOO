@@ -20,7 +20,7 @@ import javax.mail.internet.*;
  */
 public class Email {
   private static final String CORREO = "javamailcorreos@gmail.com";
-  private static final String PSSW = "abc123correos";
+  private static final String PSSW = "tzsaghkdzlnvyeou"; //NECESITA DE UN CODIGO DE VERIF DE GOOGLE, NO LA CONTRASEÑA DEL CORREO
 
   /**
    * Constructor principal de la clase Email
