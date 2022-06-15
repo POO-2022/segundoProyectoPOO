@@ -78,8 +78,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btEnviarCarton.setText("Enviar Carton");
 
         btGenerarEstadisticas.setBackground(new java.awt.Color(153, 153, 255));
-        btGenerarEstadisticas.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btGenerarEstadisticas.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btGenerarEstadisticas.setText("Generar Estadisticas");
+        btGenerarEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGenerarEstadisticasActionPerformed(evt);
+            }
+        });
 
         btJugar.setBackground(new java.awt.Color(0, 204, 0));
         btJugar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -108,7 +113,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btGenerarEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(btGenerarEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                             .addComponent(btEnviarCarton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(160, 160, 160))
@@ -166,6 +171,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void btRegistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistrarJugadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btRegistrarJugadorActionPerformed
+
+    private void btGenerarEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGenerarEstadisticasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btGenerarEstadisticasActionPerformed
 
     /**
      * @param args the command line arguments

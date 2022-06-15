@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import dao.BingoDAOXML;
 import modelo.Carton;
 import modelo.Jugador;
+import vista.Estadistica;
 import vista.IniciarJuego;
 import vista.MenuPrincipal;
 import vista.RegistrarJugador;
@@ -67,12 +68,12 @@ public class ControladorVentanaPrincipal implements ActionListener {
         registrarJugador();
         break;
       case "Generar Estadisticas":
-        //
+        generarEstadistica();
         break;
       default:
         break;  
     }
-  }
+  }  
   private void registrarJugador() {
     vista.setVisible(false);
     RegistrarJugador vistaRegistrarJugador = new RegistrarJugador();
@@ -93,6 +94,15 @@ public class ControladorVentanaPrincipal implements ActionListener {
       controladorIniciarJuego.vista.setLocationRelativeTo(null);
     // }   
   }
+  
+  public void generarEstadistica(){
+      vista.setVisible(false);
+      Estadistica estadistica = new Estadistica();
+      ControladorEstadistica controladorEstad = new ControladorEstadistica(estadistica, jugadores, cartones, vista);
+      controladorEstad.vista.setVisible(true);
+      controladorEstad.vista.setLocationRelativeTo(null);
+  }
+  
   public void cerrarVentanaLogin(){
     this.vista.dispose();
     System.exit(0);

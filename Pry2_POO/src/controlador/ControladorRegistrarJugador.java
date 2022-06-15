@@ -21,16 +21,7 @@ import modelo.Jugador;
  * @version 1.0
  */
 public class ControladorRegistrarJugador implements ActionListener {
-  /*
-   *** detalles a considerar***
-   * Para la parte de correo, en la clase jugador hay una funcion booleana que
-   * valida que el correo este bien escrito
-   * dicha funcion es primordial para poder crear al jugador, si eso no se valida,
-   * va a dar futuros problemas
-   * 
-   * la cedula esta declarada como int
-   * no se hacer interfaz xd
-   */
+
   public RegistrarJugador vista;
   public ArrayList<Jugador> jugadores;
   public ArrayList<Carton> cartones;
