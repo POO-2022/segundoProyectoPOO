@@ -59,6 +59,7 @@ public class ControladorVentanaPrincipal implements ActionListener {
         enviarCarton();
         break;
       case "Ver Carton":
+        System.out.print(cartones.size());
         abrirVentanaVerCarton();
         break;
       case "Generar Cartones":
@@ -120,7 +121,8 @@ public class ControladorVentanaPrincipal implements ActionListener {
     } else {
       vista.setVisible(false);
       IniciarJuego vistaIniciarJuego = new IniciarJuego();
-      ControladorIniciarJuego controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
+      ControladorIniciarJuego controladorIniciarJuego;
+      controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
       controladorIniciarJuego.vista.setVisible(true);
       controladorIniciarJuego.vista.setLocationRelativeTo(null);
     }   

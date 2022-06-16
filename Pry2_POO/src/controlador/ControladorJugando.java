@@ -12,7 +12,6 @@ import modelo.Carton;
 import modelo.Jugador;
 import vista.IniciarJuego;
 import vista.Jugando;
-import vista.MenuPrincipal;
 
 /**
  *
@@ -33,6 +32,8 @@ public class ControladorJugando implements ActionListener {
     vista.btRegresarIniciarJuego.addActionListener(this);
     vista.setPremio(premio);
     vista.setTipoJuego(tipo);
+    vista.setCantidadJugadores(jugadores.size());
+    vista.setCantidadCartones(cartones.size());
   }
 
   @Override

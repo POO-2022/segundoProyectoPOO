@@ -30,7 +30,7 @@ public class GenerarCarton extends javax.swing.JFrame {
         btRegresarMP = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btGenerarCartones = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jtfCantidad = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,9 +51,8 @@ public class GenerarCarton extends javax.swing.JFrame {
         btGenerarCartones.setForeground(new java.awt.Color(204, 255, 255));
         btGenerarCartones.setText("Generar");
 
-        jTextField1.setBackground(new java.awt.Color(204, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jTextField1.setText("....");
+        jtfCantidad.setBackground(new java.awt.Color(204, 255, 255));
+        jtfCantidad.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(51, 255, 153));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
@@ -80,7 +79,7 @@ public class GenerarCarton extends javax.swing.JFrame {
                         .addComponent(btGenerarCartones, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(170, 170, 170))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(208, 208, 208))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -91,7 +90,7 @@ public class GenerarCarton extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
                 .addGap(2, 2, 2)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btGenerarCartones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -154,6 +153,6 @@ public class GenerarCarton extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jtfCantidad;
     // End of variables declaration//GEN-END:variables
 }

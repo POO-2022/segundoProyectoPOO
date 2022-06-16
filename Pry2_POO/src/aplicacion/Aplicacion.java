@@ -29,8 +29,10 @@ public class Aplicacion {
     // controladorUsuario.vista.setLocationRelativeTo(null);
     //VtMenuPrincipal vista = new VtMenuPrincipal();
     MenuPrincipal vista = new MenuPrincipal();
-    ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-    ArrayList<Carton> carton = new ArrayList<Carton>();
+    ArrayList<Jugador> jugadores;
+    jugadores = new ArrayList<Jugador>();
+    ArrayList<Carton> carton;
+    carton = new ArrayList<Carton>();
     ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vista, jugadores, carton);
     controladorVentanaPrincipal.vista.setVisible(true);
     controladorVentanaPrincipal.vista.setLocationRelativeTo(null);  

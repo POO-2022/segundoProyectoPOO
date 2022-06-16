@@ -35,8 +35,8 @@ public class Jugando extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         cantidadDeCartones = new javax.swing.JLabel();
         cantidadDeJugadores = new javax.swing.JLabel();
-        elPremioDeJuego1 = new javax.swing.JLabel();
-        elPremioDeJuego2 = new javax.swing.JLabel();
+        cantidadCartones = new javax.swing.JLabel();
+        cantidadJugadores = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         numCantados = new javax.swing.JLabel();
         entradaNumCantados = new javax.swing.JTextField();
@@ -54,7 +54,6 @@ public class Jugando extends javax.swing.JFrame {
 
         elTipoDeJuego.setBackground(new java.awt.Color(204, 204, 204));
         elTipoDeJuego.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
-        elTipoDeJuego.setText(".....");
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -82,13 +81,13 @@ public class Jugando extends javax.swing.JFrame {
         cantidadDeJugadores.setForeground(new java.awt.Color(0, 102, 51));
         cantidadDeJugadores.setText("Cantidad de Jugadores: ");
 
-        elPremioDeJuego1.setBackground(new java.awt.Color(204, 204, 204));
-        elPremioDeJuego1.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
-        elPremioDeJuego1.setText(".....");
+        cantidadCartones.setBackground(new java.awt.Color(204, 204, 204));
+        cantidadCartones.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
+        cantidadCartones.setText(".....");
 
-        elPremioDeJuego2.setBackground(new java.awt.Color(204, 204, 204));
-        elPremioDeJuego2.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
-        elPremioDeJuego2.setText(".....");
+        cantidadJugadores.setBackground(new java.awt.Color(204, 204, 204));
+        cantidadJugadores.setFont(new java.awt.Font("Times New Roman", 2, 13)); // NOI18N
+        cantidadJugadores.setText(".....");
 
         jLabel5.setText("       - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         jLabel5.setToolTipText("");
@@ -131,11 +130,11 @@ public class Jugando extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(cantidadDeJugadores)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(elPremioDeJuego2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cantidadJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(cantidadDeCartones)
                                 .addGap(18, 18, 18)
-                                .addComponent(elPremioDeJuego1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cantidadCartones, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -194,13 +193,13 @@ public class Jugando extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadDeCartones)
-                    .addComponent(elPremioDeJuego1))
+                    .addComponent(cantidadCartones))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cantidadDeJugadores)
                         .addComponent(btRegresarIniciarJuego))
-                    .addComponent(elPremioDeJuego2))
+                    .addComponent(cantidadJugadores))
                 .addGap(17, 17, 17))
         );
 
@@ -212,9 +211,7 @@ public class Jugando extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -227,6 +224,20 @@ public class Jugando extends javax.swing.JFrame {
     public void setPremio(int premio){
       elPremioDeJuego.setText(String.valueOf(premio));
     }
+    public void setNumCantados(int pNumCantados){
+      String texto = numCantados.getText();
+      texto = texto + ", " + pNumCantados;
+      numCantados.setText(texto);
+    }
+    public void setCantidadCartones(int pCantidadCartones){
+      String cantidad = pCantidadCartones + "";
+        cantidadCartones.setText(cantidad);
+    }
+    public void setCantidadJugadores(int pCantidadJugadores){
+      String cantidad = pCantidadJugadores + "";
+        cantidadJugadores.setText(cantidad);
+    }
+    
     
     private void btCantarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCantarNumeroActionPerformed
         // TODO add your handling code here:
@@ -270,12 +281,12 @@ public class Jugando extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btCantarNumero;
     public javax.swing.JButton btRegresarIniciarJuego;
+    public javax.swing.JLabel cantidadCartones;
     private javax.swing.JLabel cantidadDeCartones;
     private javax.swing.JLabel cantidadDeJugadores;
-    private javax.swing.JLabel elPremioDeJuego;
-    private javax.swing.JLabel elPremioDeJuego1;
-    private javax.swing.JLabel elPremioDeJuego2;
-    private javax.swing.JLabel elTipoDeJuego;
+    public javax.swing.JLabel cantidadJugadores;
+    public javax.swing.JLabel elPremioDeJuego;
+    public javax.swing.JLabel elTipoDeJuego;
     public javax.swing.JTextField entradaNumCantados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

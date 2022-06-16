@@ -19,7 +19,7 @@ public class Jugador {
   private ArrayList<Carton> cartones;
   
   public Jugador(){
-      
+    cartones = new ArrayList<Carton>();
   }
   
   /**

@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import dao.BingoDAOXML;
 import modelo.Carton;
 import vista.GenerarCarton;
@@ -31,14 +33,17 @@ public class ControladorGenerarCarton implements ActionListener {
     this.cartones = pCartones;
     vista.btGenerarCartones.addActionListener(this);
     vista.btRegresarMP.addActionListener(this);
-
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
       case "Generar":
-        generarCartones();
+        if (vista.jtfCantidad.getText() != null && !vista.jtfCantidad.getText().equals("")) {
+          generarCartones();
+        }else {
+          JOptionPane.showMessageDialog(null, "Ingrese una cantidad de cartones");
+        }
         break;
       case "Regresar":
         vistaAnterior.setVisible(true);
@@ -48,7 +53,27 @@ public class ControladorGenerarCarton implements ActionListener {
   }
 
   private void generarCartones() {
+    int cantidadCartones = Integer.parseInt(vista.jtfCantidad.getText());
+    if (cantidadCartones <= 500 && cantidadCartones > 0) {
+      for (int i = 0; i < cantidadCartones; i++) {
+        cartones.add(new Carton());
+      }
+      JOptionPane.showMessageDialog(vista, "Cartones generados correctamente");
+      vistaAnterior.setVisible(true);
+      vista.setVisible(false);
+    } else {
+      JOptionPane.showMessageDialog(vista, "La cantidad de cartones debe ser menor a 500 y mayor a 0");
+    }
 
+  }
+
+  private boolean existeCarton(Carton carton) {
+    for (Carton cartonAux : cartones) {
+      if (cartonAux.getID() == carton.getID()) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }
