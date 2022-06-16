@@ -32,9 +32,9 @@ public class EnviarCarton extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         tfCantidad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tfCedula = new javax.swing.JTextField();
         btEnviarCarton = new javax.swing.JButton();
         btRegresarMP = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,10 +60,6 @@ public class EnviarCarton extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Cédula: ");
 
-        tfCedula.setBackground(new java.awt.Color(255, 204, 204));
-        tfCedula.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        tfCedula.setText("...........");
-
         btEnviarCarton.setBackground(new java.awt.Color(153, 255, 153));
         btEnviarCarton.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         btEnviarCarton.setForeground(new java.awt.Color(51, 0, 51));
@@ -72,6 +68,10 @@ public class EnviarCarton extends javax.swing.JFrame {
         btRegresarMP.setBackground(new java.awt.Color(51, 0, 0));
         btRegresarMP.setForeground(new java.awt.Color(255, 153, 153));
         btRegresarMP.setText("Regresar");
+
+        jComboBox1.setBackground(new java.awt.Color(255, 204, 204));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,8 +89,8 @@ public class EnviarCarton extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(tfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(btEnviarCarton)))
@@ -119,10 +119,10 @@ public class EnviarCarton extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addComponent(btEnviarCarton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btRegresarMP)
                 .addContainerGap())
         );
@@ -179,12 +179,12 @@ public class EnviarCarton extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btEnviarCarton;
     public javax.swing.JButton btRegresarMP;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField tfCantidad;
-    public javax.swing.JTextField tfCedula;
     // End of variables declaration//GEN-END:variables
 }
