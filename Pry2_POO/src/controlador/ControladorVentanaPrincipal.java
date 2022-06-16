@@ -13,10 +13,13 @@ import javax.swing.JOptionPane;
 import dao.BingoDAOXML;
 import modelo.Carton;
 import modelo.Jugador;
+import vista.EnviarCarton;
 import vista.Estadistica;
+import vista.GenerarCarton;
 import vista.IniciarJuego;
 import vista.MenuPrincipal;
 import vista.RegistrarJugador;
+import vista.VerCarton;
 
 /**
  *
@@ -53,13 +56,13 @@ public class ControladorVentanaPrincipal implements ActionListener {
         cerrarVentanaLogin();
         break;
       case "Enviar Carton":
-        System.out.print(jugadores.size());
+        enviarCarton();
         break;
       case "Ver Carton":
-        //
+        abrirVentanaVerCarton();
         break;
       case "Generar Cartones":
-        //
+        abrirVentanaGenerarCartones();
         break;
       case "Jugar Bingo":
         abrirVentanaIniciarJuego();
@@ -74,6 +77,34 @@ public class ControladorVentanaPrincipal implements ActionListener {
         break;  
     }
   }  
+  private void enviarCarton() {
+    vista.setVisible(false);
+    EnviarCarton vistaEnviarCarton = new EnviarCarton();
+    ControladorEnviarCarton controladorEnviarCarton = new ControladorEnviarCarton(vistaEnviarCarton, jugadores, cartones, vista);
+    controladorEnviarCarton.vista.setVisible(true);
+    controladorEnviarCarton.vista.setLocationRelativeTo(null);
+
+  }
+
+
+  private void abrirVentanaVerCarton() {
+    vista.setVisible(false);
+    VerCarton vistaVerCarton = new VerCarton();
+    ControladorVerCarton controladorVerCarton = new ControladorVerCarton(vistaVerCarton, cartones,vista);
+    controladorVerCarton.vista.setVisible(true);
+    controladorVerCarton.vista.setLocationRelativeTo(null);
+  }
+
+
+  private void abrirVentanaGenerarCartones() {
+    vista.setVisible(false);
+    GenerarCarton vistaGenerarCartones = new GenerarCarton();
+    ControladorGenerarCarton controladorGenerarCarton = new ControladorGenerarCarton(vistaGenerarCartones, cartones, vista);
+    controladorGenerarCarton.vista.setVisible(true);
+    controladorGenerarCarton.vista.setLocationRelativeTo(null);
+  }
+
+
   private void registrarJugador() {
     vista.setVisible(false);
     RegistrarJugador vistaRegistrarJugador = new RegistrarJugador();
@@ -84,15 +115,15 @@ public class ControladorVentanaPrincipal implements ActionListener {
 
 
   private void abrirVentanaIniciarJuego() {
-    // if (cartones.size() == 0) {
-    //   JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
-    // } else {
+    if (cartones.size() == 0) {
+       JOptionPane.showMessageDialog(null, "No hay cartones para jugar", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
       vista.setVisible(false);
       IniciarJuego vistaIniciarJuego = new IniciarJuego();
       ControladorIniciarJuego controladorIniciarJuego = new ControladorIniciarJuego(vistaIniciarJuego, jugadores, cartones, vista);
       controladorIniciarJuego.vista.setVisible(true);
       controladorIniciarJuego.vista.setLocationRelativeTo(null);
-    // }   
+    }   
   }
   
   public void generarEstadistica(){
