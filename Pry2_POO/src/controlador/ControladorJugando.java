@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+import dao.BingoDAOXML;
 import modelo.Carton;
 import modelo.Jugador;
+import modelo.TJuego;
+import modelo.Bingo;
 import modelo.Bola;
 import vista.IniciarJuego;
 import vista.Jugando;
@@ -26,6 +29,8 @@ public class ControladorJugando implements ActionListener {
   ArrayList<Bola> bolas;
   ArrayList<Integer> jugados;
   IniciarJuego vistaAnterior;
+  ArrayList<Jugador> jugadoresGanadores;
+  Bingo bingo;
 
   public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones, IniciarJuego pVistaAnterior, String tipo, int premio) {
     vista = pJugador;
@@ -39,13 +44,29 @@ public class ControladorJugando implements ActionListener {
     vista.setCantidadJugadores(jugadores.size());
     vista.setCantidadCartones(cartones.size());
     jugados = new ArrayList<Integer>();
+    bolas = new ArrayList<Bola>();
+    jugadoresGanadores = new ArrayList<Jugador>();
     crearBolas();
+    TJuego tipoJuego = tipoJuego(tipo);
+    bingo = new Bingo(tipoJuego, premio);
+  }
+
+  private TJuego tipoJuego(String tipo) {
+    if (tipo.equals("Jugar en X")) {
+      return TJuego.JUGAR_EN_X;
+    } else if (tipo.equals("Cuatro Esquinas")) {
+      return TJuego.CUATRO_ESQUINAS;
+    } else if (tipo.equals("Carton Lleno")) {
+      return TJuego.CARTON_LLENO;
+    } else {
+      return TJuego.JUGAR_EN_Z;
+    }
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
-      case "CantarNumero":
+      case "Cantar Número":
         cantarNumero();
         break;
       case "Regresar":
@@ -72,12 +93,14 @@ public class ControladorJugando implements ActionListener {
   //Esta funcion es "la maquina" que canta los numeros
   private void cantarNumero() {
     int num = (int)(Math.random()*(76-1))+1;
-    
     for(Bola cantado:bolas){
+      //System.out.println(num);
       if(cantado.getNum()==num){
         if(!cantado.getEstado()){
           cantado.setEstado(true);
           jugados.add(num);
+          vista.setNumCantados(num);
+          //System.out.println("Numero cantado: "+num);
           break;
         }
       }
@@ -105,6 +128,15 @@ public class ControladorJugando implements ActionListener {
           ganadores+=g.getID()+"-";
         }
         JOptionPane.showMessageDialog(null, "Ganador(es):\n"+ganadores);
+        bingo.setNumCantados(jugados);
+        bingo.setJugadoresGanadores(jugadoresGanadores);
+        BingoDAOXML bd = new BingoDAOXML();
+        if (bd.registrarBingo(bingo)) {
+          JOptionPane.showMessageDialog(null, "Bingo registrado con exito");
+        } else {
+          JOptionPane.showMessageDialog(null, "Error al registrar el Bingo");
+        }
+        System.out.println(ganadores);
         cerrarVentanaJuego();
       }return;
     }
@@ -132,6 +164,9 @@ public class ControladorJugando implements ActionListener {
       }
       if(gana){
         ganadores.add(actual);
+        if (actual.getDuenio() != null) {
+          jugadoresGanadores.add(actual.getDuenio());
+        }
       }
     }
     return ganadores;

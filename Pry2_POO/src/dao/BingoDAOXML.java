@@ -36,7 +36,7 @@ public class BingoDAOXML implements BingoDAO {
   public boolean registrarBingo(Bingo pBingo) {
     File file = new File("Bingos.xml");
     try {
-      String etiquetaXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n<Usuarios><\\Usuarios>";
+      String etiquetaXML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"  + "\n<partidasJugadas></partidasJugadas>";
       if (!file.exists()) {
         file.createNewFile();
         FileWriter fw = new FileWriter(file);
@@ -50,8 +50,8 @@ public class BingoDAOXML implements BingoDAO {
       Document doc = db.parse(file);
       doc.getDocumentElement().normalize();
 
-      NodeList partida = doc.getElementsByTagName("partida");
-
+      //NodeList partida = doc.getElementsByTagName("partida");
+      /* 
       for (int i = 0; i < partida.getLength(); i++) {
         Node node = partida.item(i);
         Element elemento = (Element) node;
@@ -60,18 +60,40 @@ public class BingoDAOXML implements BingoDAO {
         //   return false;
         // }
       }
+      */
       Element nodoPartida = doc.createElement("partida");
       Element nodoTipo = doc.createElement("tipo");
-      Element nodoNumerosCantados = doc.createElement("números Cantados");
+      Element nodoNumerosCantados;
+      nodoNumerosCantados = doc.createElement("numerosCantados");
       Element nodoGanadores = doc.createElement("ganadores");
       Element nodoFecha = doc.createElement("fecha");
       Element nodoHora = doc.createElement("hora");
-      // String numeros = Integer.toString(pBingo.getNumerosCantados());
-      // nodoTipo.setTextContent(pBingo.getTipo());
-      // nodoNumerosCantados.setTextContent(numeros);
-      // nodoGanadores.setTextContent(pBingo.getGanadores());
-      // nodoFecha.setTextContent(pBingo.getFecha());
-      // nodoHora.setTextContent(pBingo.getHora());
+      String numerosCantados = "";
+      for (int i = 0; i < pBingo.getNumeroJugado().size(); i++) {
+        if (i == pBingo.getNumeroJugado().size() - 1) {
+          numerosCantados += pBingo.getNumeroJugado().get(i);
+        } else {
+          numerosCantados += pBingo.getNumeroJugado().get(i) + ",";
+        }
+      }
+      String ganadores = "";
+      for (int i = 0; i < pBingo.getJugadoresGadores().size(); i++) {
+        if (i == pBingo.getJugadoresGadores().size() - 1) {
+          ganadores += pBingo.getJugadoresGadores().get(i);
+        } else {
+          ganadores += pBingo.getJugadoresGadores().get(i) + ",";
+        }
+      }
+      String fecha = pBingo.getFecha();
+      String hora = pBingo.getHora();
+      String tipo = pBingo.getTipoJuego();
+
+      //String numeros = Integer.toString(pBingo.getNumerosCantados());
+      nodoTipo.setTextContent(tipo);
+      nodoNumerosCantados.setTextContent(numerosCantados);
+      nodoGanadores.setTextContent(ganadores);
+      nodoFecha.setTextContent(fecha);
+      nodoHora.setTextContent(hora);
       
       nodoPartida.appendChild(nodoTipo);
       nodoPartida.appendChild(nodoNumerosCantados);
@@ -109,9 +131,9 @@ public class BingoDAOXML implements BingoDAO {
         Node node = nodeList.item(itr);
         if (node.getNodeType() == Node.ELEMENT_NODE) {
           // Element eElement = (Element) node;
-          String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
-          String numerosCantados = doc.getElementsByTagName("números Cantados").item(itr).getTextContent();
-          String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
+          //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
+          //String numerosCantados = doc.getElementsByTagName("números Cantados").item(itr).getTextContent();
+          //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
           String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
           String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
           

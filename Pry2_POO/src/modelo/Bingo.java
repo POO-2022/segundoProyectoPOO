@@ -4,27 +4,46 @@
  */
 package modelo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Andy Porras
  */
 public class Bingo {
+  private Date fecha;
+  private Date hora; 
   private TJuego tipJuego;
   private ArrayList<Integer> numeroJugado;
   private ArrayList<Carton> cartones;
   private ArrayList<Jugador> jugadores;
-  private double premio;
+  private int premio;
   private ArrayList<Jugador> ganadores;
   
-  public Bingo(TJuego pTipo, double pPremio) {
+  public Bingo(TJuego pTipo, int pPremio) {
     setTipJuego(pTipo);
     setPremio(pPremio);
+    setFecha();
+    setHora();
     numeroJugado = new ArrayList<Integer>();
     cartones = new ArrayList<Carton>();
     jugadores = new ArrayList<Jugador>();
     ganadores = new ArrayList<Jugador>();
+  }
+
+  private void setHora() {
+    DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    Date date = new Date();
+    hora = date;
+  }
+
+  private void setFecha() {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    Date date = new Date();
+    fecha = date;
   }
 
   public void addNumeroJugado(Integer num){
@@ -52,6 +71,20 @@ public class Bingo {
   public TJuego getTipJuego() {
     return tipJuego;
   }
+  public String getTipoJuego(){
+    switch(tipJuego){
+      case JUGAR_EN_X:
+        return "X";
+      case CUATRO_ESQUINAS:
+        return "E";
+      case CARTON_LLENO:
+        return "L";
+      case JUGAR_EN_Z:
+        return "Z";
+      default:
+        return "";
+    }
+  }
 
   public void setTipJuego(TJuego tipJuego) {
     this.tipJuego = tipJuego;
@@ -60,13 +93,32 @@ public class Bingo {
   public ArrayList<Integer> getNumeroJugado() {
     return numeroJugado;
   }
+  public void setNumCantados(ArrayList<Integer> pNum){
+    numeroJugado = pNum;
+  }
+  public void setJugadoresGanadores(ArrayList<Jugador> pJugadores){
+    ganadores = pJugadores; 
+  }
+  public ArrayList<Jugador> getJugadoresGadores(){
+    return ganadores;
+  }
 
-  public double getPremio() {
+  public int getPremio() {
     return premio;
   }
 
-  public void setPremio(double premio) {
+  public void setPremio(int premio) {
     this.premio = premio; 
+  }
+
+  public String getFecha() {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    return dateFormat.format(fecha);
+  }
+
+  public String getHora() {
+    DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+    return dateFormat.format(hora);
   }
 
   /**

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<partidasJugadas>
+    <partida>
+        <tipo>L</tipo>
+        <numerosCantados/>
+        <ganadores>null,null</ganadores>
+        <fecha>2022/06/17</fecha>
+        <hora>15:46</hora>
+    </partida>
+</partidasJugadas>

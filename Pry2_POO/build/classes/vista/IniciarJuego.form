@@ -103,12 +103,11 @@
         <Component class="javax.swing.JComboBox" name="tipoDeJuego">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
+              <StringArray count="4">
                 <StringItem index="0" value="Jugar en X"/>
-                <StringItem index="1" value="Jugar en L"/>
-                <StringItem index="2" value="Cuatro Esquinas"/>
-                <StringItem index="3" value="Carton Lleno"/>
-                <StringItem index="4" value="Jugar en Z"/>
+                <StringItem index="1" value="Cuatro Esquinas"/>
+                <StringItem index="2" value="Carton Lleno"/>
+                <StringItem index="3" value="Jugar en Z"/>
               </StringArray>
             </Property>
           </Properties>

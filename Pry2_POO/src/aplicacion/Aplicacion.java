@@ -31,6 +31,7 @@ public class Aplicacion {
     MenuPrincipal vista = new MenuPrincipal();
     ArrayList<Jugador> jugadores;
     jugadores = new ArrayList<Jugador>();
+    jugadores.add(new Jugador("Andy Porras", "andyromero320@gmail.com", 703010147));
     ArrayList<Carton> carton;
     carton = new ArrayList<Carton>();
     ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vista, jugadores, carton);
