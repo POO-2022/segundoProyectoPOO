@@ -9,5 +9,5 @@ package modelo;
  * @author Ing. Kevin
  */
 public enum TJuego {
-    JUGAR_EN_X, CUATRO_ESQUINAS, CARTON_LLENO, JUGAR_EN_L, JUGAR_EN_Z
+    JUGAR_EN_X, CUATRO_ESQUINAS, CARTON_LLENO, JUGAR_EN_Z
 }

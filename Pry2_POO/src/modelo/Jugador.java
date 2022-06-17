@@ -66,6 +66,7 @@ public class Jugador {
    */
   public boolean addCarton(Carton pCarton){
     if(cartones.size()<5 && !pCarton.isAsignado()){
+      pCarton.setAsignado();
       cartones.add(pCarton);
       return true;
     }

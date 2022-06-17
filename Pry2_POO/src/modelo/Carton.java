@@ -17,6 +17,7 @@ public class Carton {
   private int[][] valores;
   private ArrayList<Bola> jugados;
   private boolean asignado;
+  Jugador duenio;
   
   public Carton(){
     asignado = false;
@@ -25,7 +26,15 @@ public class Carton {
     setID();
     setValores();
   }
-
+  
+  public void setDuenio(Jugador pDuenio){
+    duenio = pDuenio;  
+  }
+  
+  public Jugador getDuenio(){
+    return duenio;
+  }
+  
   //se asigna automáticamente
   public void setID(){
     ID="";
@@ -117,6 +126,9 @@ public class Carton {
       return jugados;
   }
 
+  public int[][] getValores(){
+    return valores;
+  }
   public void setAsignado(){
     asignado = true;
   }

@@ -14,6 +14,10 @@ import modelo.Carton;
 import modelo.Jugador;
 import vista.EnviarCarton;
 import vista.MenuPrincipal;
+import dao.Email;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 
 /**
  *
@@ -25,7 +29,6 @@ public class ControladorEnviarCarton implements ActionListener {
   public ArrayList<Carton> cartones;
   public MenuPrincipal vistaAnterior;
   public ArrayList<Jugador> jugadores;
-
   public ControladorEnviarCarton(EnviarCarton pVistaEnviarCarton, ArrayList<Jugador> pJugadores,
       ArrayList<Carton> pCartones, MenuPrincipal pVista) {
     vista = pVistaEnviarCarton;
@@ -50,8 +53,16 @@ public class ControladorEnviarCarton implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
       case "Enviar Cartón":
-        enviarCarton();
+        {
+            try {
+                enviarCarton();
+            } catch (MessagingException ex) {
+                Logger.getLogger(ControladorEnviarCarton.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(vista, "Error al enviar el carton");
+            }
+        }
         break;
+
       case "Regresar":
         vistaAnterior.setVisible(true);
         vista.setVisible(false);
@@ -59,13 +70,14 @@ public class ControladorEnviarCarton implements ActionListener {
     }
   }
 
-  private void enviarCarton() {
+  private void enviarCarton() throws MessagingException {
     String cantidadCartones = vista.jComboBoxCantidad.getSelectedItem().toString();
     int cantidad = Integer.parseInt(cantidadCartones);
     String cedulaString =  vista.jComboBoxCedula.getSelectedItem().toString();
     int cedula = Integer.parseInt(cedulaString);
     for (Jugador jugador : jugadores) {
       int cedulaInt = jugador.getCedula();
+      String address = jugador.getCorreo();
       if (cedulaInt == cedula) {
         for (Carton carton : cartones) {
           if (cantidad == 0) {
@@ -73,6 +85,8 @@ public class ControladorEnviarCarton implements ActionListener {
           }
           if (jugador.addCarton(carton)) {
             cantidad--;
+            carton.setDuenio(jugador);
+            Email e=new Email(carton.getID(), jugador.getNombre(), address);
           }
         }
 

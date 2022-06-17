@@ -18,8 +18,8 @@ public class Email {
   /**
    * Constructor principal de la clase Email
    */
-  public Email(String pDireccion, String pAsunto, String pMensaje) throws MessagingException {
-    enviarEmail(pDireccion, pAsunto, pMensaje);  
+  public Email(String pID, String pNombre, String pDireccion) throws MessagingException {
+    enviarEmail(pID, pNombre, pDireccion);  
   }
 
   // metodos accesores
@@ -38,33 +38,50 @@ public class Email {
    * @param subject   Encabezado del correo
    * @param message   Cuerpo o mensaje del correo
    */
-  public static void enviarEmail(String pDireccion, String pAsunto, String pMensaje) throws AddressException, MessagingException {
-    try {
-      // seteo de propiedades de red y puerto SMTP
-      Properties properties = new Properties();
-      properties.put("mail.smtp.host", "smtp.gmail.com");
-      properties.put("mail.smtp.port", "587");
-      properties.put("mail.smtp.auth", "true");
-      properties.put("mail.smtp.starttls.enable", "true");
-      properties.put("mail.smtp.user", getCORREO());
-      Session session = Session.getDefaultInstance(properties);
+  public static void enviarEmail(String id, String nombre, String pDireccion) throws AddressException, MessagingException {
+    try{
+      // se obtiene el objeto Session. La configuración es para
+      // una cuenta de gmail.
+      Properties props = new Properties();
+      props.put("mail.smtp.host", "smtp.gmail.com");
+      props.setProperty("mail.smtp.starttls.enable", "true");
+      props.setProperty("mail.smtp.port", "587");
+      props.setProperty("mail.smtp.user", getCORREO());
+      props.setProperty("mail.smtp.auth", "true");
 
-      // creacion del correo
-      Message msg = new MimeMessage(session);
-      msg.setFrom(new InternetAddress(getCORREO()));
-      InternetAddress[] toAddresses = { new InternetAddress(pDireccion) };
-      msg.setRecipients(Message.RecipientType.TO, toAddresses);
-      msg.setSubject(pAsunto);
-      msg.setSentDate(new Date());
-      msg.setText(pMensaje);
+      Session session = Session.getDefaultInstance(props, null);
+      // session.setDebug(true);
 
-      // Envio de email
+      // Se compone la parte del texto
+      BodyPart texto = new MimeBodyPart();
+      texto.setText("Saludos, "+nombre+". Se le hace entrega de su correspondiente cartón para el juego de Bingo\n\n¡Suerte!");
+
+      // Se compone el adjunto con la imagen
+      BodyPart adjunto = new MimeBodyPart();
+      adjunto.setDataHandler(
+          new DataHandler(new FileDataSource("Cartones\\"+id+".png")));
+      adjunto.setFileName("id");
+      // Una MultiParte para agrupar texto e imagen.
+      MimeMultipart multiParte = new MimeMultipart();
+      multiParte.addBodyPart(texto);
+      multiParte.addBodyPart(adjunto);
+
+      // Se compone el correo, dando to, from, subject y el
+      // contenido.
+      MimeMessage message = new MimeMessage(session);
+      message.setFrom(new InternetAddress(getCORREO()));
+      message.addRecipient(Message.RecipientType.TO, new InternetAddress(pDireccion));
+      message.setSubject("Entrega de cartón: "+id);
+      message.setContent(multiParte);
+
+      // Se envia el correo.
       Transport t = session.getTransport("smtp");
-      t.connect(getCORREO(), getPSSW()); // inicio de sesion
-      t.sendMessage(msg, msg.getAllRecipients());
+      t.connect(getCORREO(), getPSSW());
+      t.sendMessage(message, message.getAllRecipients());
       t.close();
-    } catch (MessagingException ex) {
-      Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    catch (Exception e){
+      e.printStackTrace();
     }
   }
 }

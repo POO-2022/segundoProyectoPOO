@@ -9,6 +9,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import dao.BingoDAOXML;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.Carton;
 import vista.MenuPrincipal;
 import vista.VerCarton;
@@ -38,12 +47,27 @@ public class ControladorVerCarton implements ActionListener {
         vista.setVisible(false);
         break;
       case "Ver Cartón":
-        verCarton();
+        {
+            try {
+                verCarton();
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorVerCarton.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         break;
+
     }
   }
-  private void verCarton() {
-    
+  private void verCarton() throws IOException {
+    String id = vista.tfIdentificador.getText();
+    try{
+        File file = new File("Cartones\\"+id+".png");
+        BufferedImage bufferedImage = ImageIO.read(file);
+        ImageIcon imageIcon = new ImageIcon(bufferedImage);
+        vista.lblimagen.setIcon(imageIcon);
+    }catch(Exception e){
+      JOptionPane.showMessageDialog(null, "El cartón no existe");  
+    }
   }
 
 }

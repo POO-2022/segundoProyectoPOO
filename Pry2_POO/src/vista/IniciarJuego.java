@@ -54,7 +54,7 @@ public class IniciarJuego extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
 
-        tipoDeJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugar en X", "Jugar en L", "Cuatro Esquinas", "Carton Lleno", "Jugar en Z" }));
+        tipoDeJuego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jugar en X", "Cuatro Esquinas", "Carton Lleno", "Jugar en Z" }));
         tipoDeJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoDeJuegoActionPerformed(evt);

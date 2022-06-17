@@ -33,6 +33,7 @@ public class VerCarton extends javax.swing.JFrame {
         tfIdentificador = new javax.swing.JTextField();
         btVerCarton = new javax.swing.JButton();
         btRegresarMP = new javax.swing.JButton();
+        lblimagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,17 +52,32 @@ public class VerCarton extends javax.swing.JFrame {
         jLabel3.setText("Identificación: ");
 
         tfIdentificador.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        tfIdentificador.setText(".....");
+        tfIdentificador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdentificadorActionPerformed(evt);
+            }
+        });
 
         btVerCarton.setBackground(new java.awt.Color(102, 102, 0));
         btVerCarton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btVerCarton.setForeground(new java.awt.Color(255, 255, 204));
         btVerCarton.setText("Ver Cartón");
+        btVerCarton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerCartonActionPerformed(evt);
+            }
+        });
 
         btRegresarMP.setBackground(new java.awt.Color(102, 0, 0));
         btRegresarMP.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btRegresarMP.setForeground(new java.awt.Color(255, 51, 51));
         btRegresarMP.setText("Regresar");
+
+        lblimagen.setBackground(new java.awt.Color(0, 0, 0));
+        lblimagen.setForeground(new java.awt.Color(0, 0, 0));
+        lblimagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblimagen.setText("La imagen se muestra aquí");
+        lblimagen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,25 +86,28 @@ public class VerCarton extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 476, Short.MAX_VALUE)
+                        .addComponent(btRegresarMP)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)
-                                .addComponent(btVerCarton)))
-                        .addContainerGap(100, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(199, 199, 199))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btRegresarMP)
-                                .addContainerGap())))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(btVerCarton)))
+                                .addGap(0, 94, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(202, 202, 202)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +121,9 @@ public class VerCarton extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(tfIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btVerCarton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblimagen, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btRegresarMP)
                 .addContainerGap())
         );
@@ -120,6 +141,14 @@ public class VerCarton extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdentificadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdentificadorActionPerformed
+
+    private void btVerCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerCartonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btVerCartonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +192,7 @@ public class VerCarton extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel lblimagen;
     public javax.swing.JTextField tfIdentificador;
     // End of variables declaration//GEN-END:variables
 }
