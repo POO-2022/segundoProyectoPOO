@@ -118,9 +118,9 @@ public class BingoDAOXML implements BingoDAO {
   }
 
   @Override
-  public ArrayList<Bingo> cargarBingos() {
+  public ArrayList<String> numerosCantados() {
     try {
-      ArrayList<Bingo> bingos = new ArrayList<Bingo>();
+      ArrayList<String> listaNumerosCantados = new ArrayList<String>();
       File file = new File("Bingos.xml");
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder db = dbf.newDocumentBuilder();
@@ -132,23 +132,106 @@ public class BingoDAOXML implements BingoDAO {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
           // Element eElement = (Element) node;
           //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
-          //String numerosCantados = doc.getElementsByTagName("números Cantados").item(itr).getTextContent();
+          String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
           //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
-          String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-          String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
-          
-          //bingos.add(new Bingo(tipo, numerosCantados, ganadores, fecha, hora));
-          // String nombre = eElement.getElementsByTagName("Nombre").item(0).getTextContent();
-          // String contrasena = eElement.getElementsByTagName("Contraseña").item(0).getTextContent();
-
-          // usuarios.add(new Bingo(nombre, contrasena));
+          //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
+          //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
+          listaNumerosCantados.add(numerosCantados);
         }
       }
-      return bingos;
+      return listaNumerosCantados;
     } catch (Exception e) {
       e.printStackTrace();
     }
     return null;
   }
+
+@Override
+public ArrayList<String> listaFechasDeJuegos() {
+	try {
+    ArrayList<String> listaFechas = new ArrayList<String>();
+    File file = new File("Bingos.xml");
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    DocumentBuilder db = dbf.newDocumentBuilder();
+    Document doc = db.parse(file);
+    doc.getDocumentElement().normalize();
+    NodeList nodeList = doc.getElementsByTagName("partida");
+    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+      Node node = nodeList.item(itr);
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        // Element eElement = (Element) node;
+        //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
+        String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
+        //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
+        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
+        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
+        listaFechas.add(fecha);
+      }
+    }
+    return listaFechas;
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+	return null;
+}
+
+@Override
+public ArrayList<String> listaTiposDeJuegos() {
+  try {
+    ArrayList<String> listaTipos = new ArrayList<String>();
+    File file = new File("Bingos.xml");
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    DocumentBuilder db = dbf.newDocumentBuilder();
+    Document doc = db.parse(file);
+    doc.getDocumentElement().normalize();
+    NodeList nodeList = doc.getElementsByTagName("partida");
+    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+      Node node = nodeList.item(itr);
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        // Element eElement = (Element) node;
+        String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
+        //String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
+        //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
+        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
+        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
+        listaTipos.add(tipo);
+      }
+    }
+    return listaTipos;
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+	return null;
+}
+
+@Override
+public ArrayList<String> listaJugadoresGanadores() {
+	try {
+    ArrayList<String> listaGanadores = new ArrayList<String>();
+    File file = new File("Bingos.xml");
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    DocumentBuilder db = dbf.newDocumentBuilder();
+    Document doc = db.parse(file);
+    doc.getDocumentElement().normalize();
+    NodeList nodeList = doc.getElementsByTagName("partida");
+    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+      Node node = nodeList.item(itr);
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        // Element eElement = (Element) node;
+        //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
+        //String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
+        String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
+        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
+        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
+        listaGanadores.add(ganadores);
+      }
+    }
+    return listaGanadores;
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+	return null;
+}
+  
 
 }

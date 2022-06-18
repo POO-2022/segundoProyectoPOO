@@ -32,7 +32,8 @@ public class ControladorJugando implements ActionListener {
   ArrayList<Jugador> jugadoresGanadores;
   Bingo bingo;
 
-  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones, IniciarJuego pVistaAnterior, String tipo, int premio) {
+  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
+      IniciarJuego pVistaAnterior, String tipo, int premio) {
     vista = pJugador;
     this.jugadores = pJugadores;
     this.cartones = pCartones;
@@ -49,6 +50,7 @@ public class ControladorJugando implements ActionListener {
     crearBolas();
     TJuego tipoJuego = tipoJuego(tipo);
     bingo = new Bingo(tipoJuego, premio);
+    bingo.setBolas(bolas);
   }
 
   private TJuego tipoJuego(String tipo) {
@@ -76,58 +78,80 @@ public class ControladorJugando implements ActionListener {
         break;
     }
   }
-  
-  //se crean las 75 bolas del juego
-  private void crearBolas(){
-      for(int i = 1; i<=75; i++){
-          Bola b = new Bola(i);
-          bolas.add(b);
-      }
+
+  // se crean las 75 bolas del juego
+  private void crearBolas() {
+    for (int i = 1; i <= 75; i++) {
+      Bola b = new Bola(i);
+      bolas.add(b);
+    }
   }
-  
+
   private void cerrarVentanaJuego() {
     vista.setVisible(false);
     vistaAnterior.setVisible(true);
   }
 
-  //Esta funcion es "la maquina" que canta los numeros
+  // Esta funcion es "la maquina" que canta los numeros
   private void cantarNumero() {
-    int num = (int)(Math.random()*(76-1))+1;
-    for(Bola cantado:bolas){
-      //System.out.println(num);
-      if(cantado.getNum()==num){
-        if(!cantado.getEstado()){
-          cantado.setEstado(true);
-          jugados.add(num);
-          vista.setNumCantados(num);
-          //System.out.println("Numero cantado: "+num);
-          break;
+    int num;
+    boolean numeroCantado = false;
+    while (!numeroCantado) {
+      num = (int) (Math.random() * (76 - 1)) + 1;
+      for (Bola cantado : bolas) {
+        // System.out.println(num);
+        if (cantado.getNum() == num) {
+          if (!cantado.getEstado()) {
+            cantado.setEstado(true);
+            jugados.add(num);
+            vista.setNumCantados(num);
+            // System.out.println("Numero cantado: "+num);
+            break;
+          }
         }
       }
-    }   
-    
+      numeroCantado = true;
+    }
+
     hayGanador();
-            
+
   }
-  
-  //validar si ya hay ganador
-  public void hayGanador(){ 
+
+  // validar si ya hay ganador
+  public void hayGanador() {
     String tipoJuego = vista.elTipoDeJuego.getText();
-    if(tipoJuego.equals("Jugar en X")){
-        jugarEnX();
-        return;
+    if (tipoJuego.equals("Jugar en X")) {
+      jugarEnX();
+      return;
     }
-    if(tipoJuego.equals("Cuatro Esquinas")){
-        cuatroEsquinas();
-        return;
-    }
-    if(tipoJuego.equals("Carton Lleno")){
-      if(!cartonLleno().isEmpty()){
-        String ganadores="-";  
-        for(Carton g: cartonLleno()){
-          ganadores+=g.getID()+"-";
+    if (tipoJuego.equals("Cuatro Esquinas")) {
+      if (!cuatroEsquinas().isEmpty()) {
+        String ganadores = "";
+        for (Carton g : cuatroEsquinas()) {
+          ganadores += g.getID() + "-";
         }
-        JOptionPane.showMessageDialog(null, "Ganador(es):\n"+ganadores);
+        JOptionPane.showMessageDialog(null, "El ganador es: " + ganadores);
+        bingo.setNumCantados(jugados);
+        bingo.setBolas(bolas);
+        bingo.setJugadoresGanadores(jugadoresGanadores);
+        BingoDAOXML bingoDAO = new BingoDAOXML();
+        if (bingoDAO.registrarBingo(bingo)) {
+          JOptionPane.showMessageDialog(null, "Se guardo el juego");
+        } else {
+          JOptionPane.showMessageDialog(null, "No se guardo el juego");
+        }
+        System.out.println(ganadores);
+        cerrarVentanaJuego();
+      }
+      return;
+    }
+    if (tipoJuego.equals("Carton Lleno")) {
+      if (!cartonLleno().isEmpty()) {
+        String ganadores = "-";
+        for (Carton g : cartonLleno()) {
+          ganadores += g.getID() + "-";
+        }
+        JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
         bingo.setNumCantados(jugados);
         bingo.setJugadoresGanadores(jugadoresGanadores);
         BingoDAOXML bd = new BingoDAOXML();
@@ -138,31 +162,48 @@ public class ControladorJugando implements ActionListener {
         }
         System.out.println(ganadores);
         cerrarVentanaJuego();
-      }return;
+      }
+      return;
     }
-    if(tipoJuego.equals("Jugar en Z")){
-        jugarEnZ();
-        return;
+    if (tipoJuego.equals("Jugar en Z")) {
+      if (!jugarEnZ().isEmpty()) {
+        String ganadores = "";
+        for (Carton g : jugarEnZ()) {
+          ganadores += g.getID() + "-";
+        }
+        JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
+        bingo.setNumCantados(jugados);
+        bingo.setJugadoresGanadores(jugadoresGanadores);
+        BingoDAOXML bd = new BingoDAOXML();
+        if (bd.registrarBingo(bingo)) {
+          JOptionPane.showMessageDialog(null, "Bingo registrado con exito");
+        } else {
+          JOptionPane.showMessageDialog(null, "Error al registrar el Bingo");
+        }
+        System.out.println(ganadores);
+        cerrarVentanaJuego();
+      }
+      return;
     }
 
   }
-  
-  //Funciones para validar los cartones ganadores  
-  public ArrayList<Carton> cartonLleno(){
-    ArrayList<Carton> ganadores = new ArrayList<Carton>();
-    for(Carton actual: cartones){
-      int[][] nums=actual.getValores();
-      boolean gana=true;
 
-      for(int i = 0; i<5; i++){
-        for(int j = 0; j<5; j++){
-          //al ser carton lleno, si no tiene un numero incluido, se descarta como ganador
-          if(!jugados.contains(nums[i][j])){
-            gana=false;
+  // Funciones para validar los cartones ganadores
+  public ArrayList<Carton> cartonLleno() {
+    ArrayList<Carton> ganadores = new ArrayList<Carton>();
+    for (Carton actual : cartones) {
+      int[][] nums = actual.getValores();
+      boolean gana = true;
+
+      for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+          // al ser carton lleno, si no tiene un numero incluido, se descarta como ganador
+          if (!jugados.contains(nums[i][j])) {
+            gana = false;
           }
         }
       }
-      if(gana){
+      if (gana) {
         ganadores.add(actual);
         if (actual.getDuenio() != null) {
           jugadoresGanadores.add(actual.getDuenio());
@@ -171,16 +212,63 @@ public class ControladorJugando implements ActionListener {
     }
     return ganadores;
   }
-  
-  public void jugarEnZ(){
-      
+
+  public ArrayList<Carton> jugarEnZ() {
+    ArrayList<Carton> ganadores = new ArrayList<Carton>();
+    for (Carton actual : cartones) {
+      int[][] nums = actual.getValores();
+      boolean gana = true;
+      for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+          if (i == 0 || i == 4) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+            }
+          }
+          if (i < 4 && 0 < i) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+              i++;
+            }
+          } 
+        }
+      }
+      if (gana) {
+        ganadores.add(actual);
+        if (actual.getDuenio() != null) {
+          jugadoresGanadores.add(actual.getDuenio());
+        }
+      }
+    }
+    return ganadores;
   }
-  
-  public void cuatroEsquinas(){
-      
+
+  public ArrayList<Carton> cuatroEsquinas() {
+    ArrayList<Carton> ganadores = new ArrayList<Carton>();
+    for (Carton actual : cartones) {
+      int[][] nums = actual.getValores();
+      boolean gana = true;
+      for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+          if (i == 0 || i == 4) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+              j += 3;
+            }
+          }
+        }
+      }
+      if (gana) {
+        ganadores.add(actual);
+        if (actual.getDuenio() != null) {
+          jugadoresGanadores.add(actual.getDuenio());
+        }
+      }
+    }
+    return ganadores;
   }
-  
-  public void jugarEnX(){
-      
+
+  public void jugarEnX() {
+
   }
 }

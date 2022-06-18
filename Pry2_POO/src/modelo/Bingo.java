@@ -22,6 +22,7 @@ public class Bingo {
   private ArrayList<Jugador> jugadores;
   private int premio;
   private ArrayList<Jugador> ganadores;
+  private ArrayList<Bola> bolas;
   
   public Bingo(TJuego pTipo, int pPremio) {
     setTipJuego(pTipo);
@@ -32,6 +33,29 @@ public class Bingo {
     cartones = new ArrayList<Carton>();
     jugadores = new ArrayList<Jugador>();
     ganadores = new ArrayList<Jugador>();
+    bolas = new ArrayList<Bola>();
+    crearBolas();
+  }
+
+  public int cantarNumero() {
+    int num = (int) (Math.random() *(76-1)) + 1;
+    boolean numeroCantado = false;
+    while (!numeroCantado) {
+      num = (int)(Math.random()*(76-1))+1;
+      for(Bola cantado:bolas){
+        //System.out.println(num);
+        if(cantado.getNum()==num){
+          if(!cantado.getEstado()){
+            cantado.setEstado(true);
+            numeroJugado.add(num);
+            //System.out.println("Numero cantado: "+num);
+            break;
+          }
+        }
+      }  
+      numeroCantado = true;
+    } 
+    return num;
   }
 
   private void setHora() {
@@ -109,6 +133,29 @@ public class Bingo {
 
   public void setPremio(int premio) {
     this.premio = premio; 
+  }
+
+  public ArrayList<Bola> getBolas() {
+    return bolas;
+  }
+  private void crearBolas(){
+    for(int i = 1; i<=75; i++){
+        Bola b = new Bola(i);
+        bolas.add(b);
+    }
+}
+  public ArrayList<Bola> getBolasJugadas(){
+    ArrayList<Bola> bolasJugadas = new ArrayList<Bola>();
+    for(Bola act: bolas){
+      if(act.getEstado() == true){
+        bolasJugadas.add(act);
+      }
+    }
+    return bolasJugadas;
+  }
+
+  public void setBolas(ArrayList<Bola> bolas) {
+    this.bolas = bolas;
   }
 
   public String getFecha() {
