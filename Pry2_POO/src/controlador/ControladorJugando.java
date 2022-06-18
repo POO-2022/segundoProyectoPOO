@@ -121,7 +121,23 @@ public class ControladorJugando implements ActionListener {
   public void hayGanador() {
     String tipoJuego = vista.elTipoDeJuego.getText();
     if (tipoJuego.equals("Jugar en X")) {
-      jugarEnX();
+      if (!jugarEnX().isEmpty()) {
+        String ganador = "";
+        for (Carton carton : jugarEnX()) {
+          ganador += carton.getID() + "-";
+        }
+        JOptionPane.showMessageDialog(vista, "El ganador es: " + ganador);
+        bingo.setNumCantados(jugados);
+        bingo.setBolas(bolas);
+        bingo.setJugadoresGanadores(jugadoresGanadores);
+        BingoDAOXML bingoDAO = new BingoDAOXML();
+        if (bingoDAO.registrarBingo(bingo)) {
+          JOptionPane.showMessageDialog(vista, "Se ha registrado el juego correctamente");
+        } else {
+          JOptionPane.showMessageDialog(vista, "No se ha registrado el juego");
+        }
+        cerrarVentanaJuego();
+      }
       return;
     }
     if (tipoJuego.equals("Cuatro Esquinas")) {
@@ -268,7 +284,41 @@ public class ControladorJugando implements ActionListener {
     return ganadores;
   }
 
-  public void jugarEnX() {
-
+  public ArrayList<Carton> jugarEnX() {
+    ArrayList<Carton> ganadores = new ArrayList<Carton>();
+    for (Carton actual : cartones) {
+      int[][] nums = actual.getValores();
+      boolean gana = true;
+      for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+          if (i == 0 || i == 4) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+              j += 3;
+            }
+          }
+          if (i == 1 || i == 3 && j != 4) {
+            j++;
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+            }
+          }
+          if (i == 2) {
+            j = 2;
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+              j += 3;
+            }
+          }
+        }
+      }
+      if (gana) {
+        ganadores.add(actual);
+        if (actual.getDuenio() != null) {
+          jugadoresGanadores.add(actual.getDuenio());
+        }
+      }
+    }
+    return ganadores;
   }
 }
