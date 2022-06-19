@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import dao.BingoDAOXML;
-import java.io.File;
 import modelo.Carton;
 import modelo.Jugador;
 import vista.EnviarCarton;
@@ -150,16 +149,6 @@ public class ControladorVentanaPrincipal implements ActionListener {
   
   public void cerrarVentanaLogin(){
     this.vista.dispose();
-    //limpieza de la carpeta Cartones
-    for(Carton actual: cartones){
-      System.out.println(actual.getID());
-      String ruta = "Cartones/" + actual.getID() + ".png";
-      File img = new File(ruta);
-      if (img.isFile() && img.exists()) {
-        img.delete();
-      }
-    }
-    cartones.clear();
     System.exit(0);
   }
 

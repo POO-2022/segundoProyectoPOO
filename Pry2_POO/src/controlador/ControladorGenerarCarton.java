@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import dao.BingoDAOXML;
-import java.io.File;
 import modelo.Carton;
 import vista.GenerarCarton;
 import vista.MenuPrincipal;
@@ -56,17 +55,6 @@ public class ControladorGenerarCarton implements ActionListener {
 
   private void generarCartones() {
   try{
-    //limpieza de la carpeta Cartones
-    for(Carton actual: cartones){
-      System.out.println(actual.getID());
-      String ruta = "Cartones/" + actual.getID() + ".png";
-      File img = new File(ruta);
-      if (img.isFile() && img.exists()) {
-        img.delete();
-      }
-    }
-    cartones.clear();
-    
     int cantidadCartones = Integer.parseInt(vista.jtfCantidad.getText());
     if (cantidadCartones <= 500 && cantidadCartones > 0) {
       for (int i = 0; i < cantidadCartones; i++) {
