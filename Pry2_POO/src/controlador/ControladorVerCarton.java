@@ -43,6 +43,8 @@ public class ControladorVerCarton implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
       case "Regresar":
+        vista.lblimagen.setIcon(null);
+        vista.lblimagen.setText("La imagen se muestra aquí");
         vistaAnterior.setVisible(true);
         vista.setVisible(false);
         break;
@@ -64,8 +66,11 @@ public class ControladorVerCarton implements ActionListener {
         File file = new File("Cartones\\"+id+".png");
         BufferedImage bufferedImage = ImageIO.read(file);
         ImageIcon imageIcon = new ImageIcon(bufferedImage);
+        vista.lblimagen.setText("");
         vista.lblimagen.setIcon(imageIcon);
     }catch(Exception e){
+      vista.lblimagen.setIcon(null);
+      vista.lblimagen.setText("La imagen se muestra aquí");
       JOptionPane.showMessageDialog(null, "El cartón no existe");  
     }
   }
