@@ -96,25 +96,26 @@ public class ControladorJugando implements ActionListener {
   private void cantarNumero() {
     int num;
     boolean numeroCantado = false;
-    while (!numeroCantado) {
-      num = (int) (Math.random() * (76 - 1)) + 1;
-      for (Bola cantado : bolas) {
-        // System.out.println(num);
-        if (cantado.getNum() == num) {
-          if (!cantado.getEstado()) {
-            cantado.setEstado(true);
-            jugados.add(num);
-            vista.setNumCantados(num);
-            // System.out.println("Numero cantado: "+num);
-            break;
-          }
+    // while (!numeroCantado) {
+    num = (int) (Math.random() * (76 - 1)) + 1;
+    for (Bola cantado : bolas) {
+      // System.out.println(num);
+      if (cantado.getNum() == num) {
+        if (!cantado.getEstado()) {
+          cantado.setEstado(true);
+          jugados.add(num);
+          vista.setNumCantados(num);
+          numeroCantado = true;
+          // System.out.println("Numero cantado: "+num);
+          break;
         }
       }
-      numeroCantado = true;
+      // }
     }
-
+    //if (numeroCantado) {
     hayGanador();
-
+    //}
+    //cantarNumero();
   }
 
   // validar si ya hay ganador
@@ -246,7 +247,7 @@ public class ControladorJugando implements ActionListener {
               gana = false;
               i++;
             }
-          } 
+          }
         }
       }
       if (gana) {
@@ -291,23 +292,21 @@ public class ControladorJugando implements ActionListener {
       boolean gana = true;
       for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
+          //System.out.println("i: " + i + " j: " + j);
           if (i == 0 || i == 4) {
-            if (!jugados.contains(nums[i][j])) {
+            if (!jugados.contains(nums[i][j])) {//
               gana = false;
               j += 3;
             }
           }
-          if (i == 1 || i == 3 && j != 4) {
-            j++;
+          if ((i == 1 || i == 3) && (j == 1 || j == 3)) { //
             if (!jugados.contains(nums[i][j])) {
               gana = false;
             }
           }
-          if (i == 2) {
-            j = 2;
+          if (i == 2 && j == 2 ) { // si es el dato del medio
             if (!jugados.contains(nums[i][j])) {
               gana = false;
-              j += 3;
             }
           }
         }
