@@ -16,10 +16,16 @@ public class Email {
   private static final String PSSW = "tzsaghkdzlnvyeou"; //NECESITA DE UN CODIGO DE VERIF DE GOOGLE, NO LA CONTRASEÑA DEL CORREO
 
   /**
-   * Constructor principal de la clase Email
+   * 
+   * @param pID el ID del carton
+   * @param pNombre El nombre del jugador
+   * @param pDireccion La direccion de correo del jugador
+   * @param pMensaje El cuerpo del correo
+   * @param pAsunto El asunto o titulo del correo
+   * @throws MessagingException En caso de que no se envie el correo
    */
-  public Email(String pID, String pNombre, String pDireccion) throws MessagingException {
-    enviarEmail(pID, pNombre, pDireccion);  
+  public Email(String pID, String pNombre, String pDireccion, String pMensaje, String pAsunto) throws MessagingException {
+    enviarEmail(pID, pNombre, pDireccion, pMensaje, pAsunto);  
   }
 
   // metodos accesores
@@ -38,7 +44,7 @@ public class Email {
    * @param subject   Encabezado del correo
    * @param message   Cuerpo o mensaje del correo
    */
-  public static void enviarEmail(String id, String nombre, String pDireccion) throws AddressException, MessagingException {
+  public static void enviarEmail(String id, String nombre, String pDireccion, String pMensaje, String pAsunto) throws AddressException, MessagingException {
     try{
       // se obtiene el objeto Session. La configuración es para
       // una cuenta de gmail.
@@ -54,7 +60,7 @@ public class Email {
 
       // Se compone la parte del texto
       BodyPart texto = new MimeBodyPart();
-      texto.setText("Saludos, "+nombre+". Se le hace entrega de su correspondiente cartón para el juego de Bingo\n\n¡Suerte!");
+      texto.setText(pMensaje);
 
       // Se compone el adjunto con la imagen
       BodyPart adjunto = new MimeBodyPart();
@@ -71,7 +77,7 @@ public class Email {
       MimeMessage message = new MimeMessage(session);
       message.setFrom(new InternetAddress(getCORREO()));
       message.addRecipient(Message.RecipientType.TO, new InternetAddress(pDireccion));
-      message.setSubject("Entrega de cartón: "+id);
+      message.setSubject(pAsunto);
       message.setContent(multiParte);
 
       // Se envia el correo.
