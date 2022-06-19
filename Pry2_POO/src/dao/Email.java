@@ -66,7 +66,7 @@ public class Email {
       BodyPart adjunto = new MimeBodyPart();
       adjunto.setDataHandler(
           new DataHandler(new FileDataSource("Cartones\\"+id+".png")));
-      adjunto.setFileName("id");
+      adjunto.setFileName(id);
       // Una MultiParte para agrupar texto e imagen.
       MimeMultipart multiParte = new MimeMultipart();
       multiParte.addBodyPart(texto);
