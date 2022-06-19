@@ -128,7 +128,7 @@ public class ControladorJugando implements ActionListener {
         String ganador = "";
         for (Carton carton : jugarEnX()) {
           ganador += carton.getID() + "-";
-          jugadoresGanadores.add(g.getDuenio());
+          jugadoresGanadores.add(carton.getDuenio());
         }
         JOptionPane.showMessageDialog(vista, "El ganador es: " + ganador);
         //notificando al jugador del gane
