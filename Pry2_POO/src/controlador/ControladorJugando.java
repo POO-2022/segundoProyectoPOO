@@ -48,8 +48,7 @@ public class ControladorJugando implements ActionListener {
     bolas = new ArrayList<Bola>();
     jugadoresGanadores = new ArrayList<Jugador>();
     crearBolas();
-    TJuego tipoJuego = tipoJuego(tipo);
-    bingo = new Bingo(tipoJuego, premio);
+    bingo = new Bingo(tipoJuego(tipo), premio);
     bingo.setBolas(bolas);
   }
 

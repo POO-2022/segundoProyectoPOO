@@ -22,12 +22,22 @@ public class Aplicacion {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    // LoginForm vista = new LoginForm();
-    // Usuario usuario = new Usuario();
-    // ControladorUsuario controladorUsuario = new ControladorUsuario(vista, usuario);
-    //  controladorUsuario.vista.setVisible(true);
-    // controladorUsuario.vista.setLocationRelativeTo(null);
-    //VtMenuPrincipal vista = new VtMenuPrincipal();
+    BingoDAO bingoDAO = new BingoDAOXML();
+    ArrayList<String> fechas = bingoDAO.listaFechasDeJuegos();
+    ArrayList<String> tipo = bingoDAO.listaTiposDeJuegos();
+    ArrayList<String> ganadores = bingoDAO.listaJugadoresGanadores();
+    System.out.println(fechas.size());
+    for (String f : fechas) {
+      System.out.println(f);
+    }
+    System.out.println(tipo.size());
+    for (String t : tipo) {
+      System.out.println(t);
+    }
+    System.out.println(ganadores.size());
+    for (String g : ganadores) {
+      System.out.println(g);
+    }
     MenuPrincipal vista = new MenuPrincipal();
     ArrayList<Jugador> jugadores;
     jugadores = new ArrayList<Jugador>();

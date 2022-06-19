@@ -49,18 +49,7 @@ public class BingoDAOXML implements BingoDAO {
       DocumentBuilder db = dbf.newDocumentBuilder();
       Document doc = db.parse(file);
       doc.getDocumentElement().normalize();
-
-      //NodeList partida = doc.getElementsByTagName("partida");
-      /* 
-      for (int i = 0; i < partida.getLength(); i++) {
-        Node node = partida.item(i);
-        Element elemento = (Element) node;
-        //String tipo = elemento.getElementsByTagName("tipo").item(0).getTextContent();
-        // if (pBingo.getIdentificador().equals(identificador)) {
-        //   return false;
-        // }
-      }
-      */
+      // crear el elemento nodo de cada objeto
       Element nodoPartida = doc.createElement("partida");
       Element nodoTipo = doc.createElement("tipo");
       Element nodoNumerosCantados;
@@ -68,6 +57,7 @@ public class BingoDAOXML implements BingoDAO {
       Element nodoGanadores = doc.createElement("ganadores");
       Element nodoFecha = doc.createElement("fecha");
       Element nodoHora = doc.createElement("hora");
+
       String numerosCantados = "";
       for (int i = 0; i < pBingo.getNumeroJugado().size(); i++) {
         if (i == pBingo.getNumeroJugado().size() - 1) {
@@ -130,12 +120,7 @@ public class BingoDAOXML implements BingoDAO {
       for (int itr = 0; itr < nodeList.getLength(); itr++) {
         Node node = nodeList.item(itr);
         if (node.getNodeType() == Node.ELEMENT_NODE) {
-          // Element eElement = (Element) node;
-          //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
           String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
-          //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
-          //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-          //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
           listaNumerosCantados.add(numerosCantados);
         }
       }
@@ -156,16 +141,14 @@ public ArrayList<String> listaFechasDeJuegos() {
     Document doc = db.parse(file);
     doc.getDocumentElement().normalize();
     NodeList nodeList = doc.getElementsByTagName("partida");
-    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+    for (int itr = 0; itr < nodeList.getLength()-1; itr++) {
       Node node = nodeList.item(itr);
       if (node.getNodeType() == Node.ELEMENT_NODE) {
-        // Element eElement = (Element) node;
-        //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
         String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-        //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
-        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
-        listaFechas.add(fecha);
+        if (fecha.equals("")) {
+        } else {
+          listaFechas.add(fecha);
+        }
       }
     }
     return listaFechas;
@@ -185,16 +168,13 @@ public ArrayList<String> listaTiposDeJuegos() {
     Document doc = db.parse(file);
     doc.getDocumentElement().normalize();
     NodeList nodeList = doc.getElementsByTagName("partida");
-    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+    for (int itr = 0; itr < nodeList.getLength()-1; itr++) {
       Node node = nodeList.item(itr);
       if (node.getNodeType() == Node.ELEMENT_NODE) {
-        // Element eElement = (Element) node;
         String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
-        //String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
-        //String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
-        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
-        listaTipos.add(tipo);
+        if (tipo != null || tipo != "") {
+          listaTipos.add(tipo);
+        }
       }
     }
     return listaTipos;
@@ -214,16 +194,13 @@ public ArrayList<String> listaJugadoresGanadores() {
     Document doc = db.parse(file);
     doc.getDocumentElement().normalize();
     NodeList nodeList = doc.getElementsByTagName("partida");
-    for (int itr = 0; itr < nodeList.getLength(); itr++) {
+    for (int itr = 0; itr < nodeList.getLength()-1; itr++) {
       Node node = nodeList.item(itr);
       if (node.getNodeType() == Node.ELEMENT_NODE) {
-        // Element eElement = (Element) node;
-        //String tipo = doc.getElementsByTagName("tipo").item(itr).getTextContent();
-        //String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
         String ganadores = doc.getElementsByTagName("ganadores").item(itr).getTextContent();
-        //String fecha = doc.getElementsByTagName("fecha").item(itr).getTextContent();
-        //String hora = doc.getElementsByTagName("hora").item(itr).getTextContent();
-        listaGanadores.add(ganadores);
+        if (ganadores !="" ) {
+          listaGanadores.add(ganadores);
+        }
       }
     }
     return listaGanadores;
