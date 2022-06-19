@@ -48,7 +48,8 @@ public class ControladorJugando implements ActionListener {
     bolas = new ArrayList<Bola>();
     jugadoresGanadores = new ArrayList<Jugador>();
     crearBolas();
-    bingo = new Bingo(tipoJuego(tipo), premio);
+    TJuego tipoJuego = tipoJuego(tipo);
+    bingo = new Bingo(tipoJuego, premio);
     bingo.setBolas(bolas);
   }
 
@@ -95,49 +96,32 @@ public class ControladorJugando implements ActionListener {
   private void cantarNumero() {
     int num;
     boolean numeroCantado = false;
-    // while (!numeroCantado) {
-    num = (int) (Math.random() * (76 - 1)) + 1;
-    for (Bola cantado : bolas) {
-      // System.out.println(num);
-      if (cantado.getNum() == num) {
-        if (!cantado.getEstado()) {
-          cantado.setEstado(true);
-          jugados.add(num);
-          vista.setNumCantados(num);
-          numeroCantado = true;
-          // System.out.println("Numero cantado: "+num);
-          break;
+    while (!numeroCantado) {
+      num = (int) (Math.random() * (76 - 1)) + 1;
+      for (Bola cantado : bolas) {
+        // System.out.println(num);
+        if (cantado.getNum() == num) {
+          if (!cantado.getEstado()) {
+            cantado.setEstado(true);
+            jugados.add(num);
+            vista.setNumCantados(num);
+            // System.out.println("Numero cantado: "+num);
+            break;
+          }
         }
       }
-      // }
+      numeroCantado = true;
     }
-    //if (numeroCantado) {
+
     hayGanador();
-    //}
-    //cantarNumero();
+
   }
 
   // validar si ya hay ganador
   public void hayGanador() {
     String tipoJuego = vista.elTipoDeJuego.getText();
     if (tipoJuego.equals("Jugar en X")) {
-      if (!jugarEnX().isEmpty()) {
-        String ganador = "";
-        for (Carton carton : jugarEnX()) {
-          ganador += carton.getID() + "-";
-        }
-        JOptionPane.showMessageDialog(vista, "El ganador es: " + ganador);
-        bingo.setNumCantados(jugados);
-        bingo.setBolas(bolas);
-        bingo.setJugadoresGanadores(jugadoresGanadores);
-        BingoDAOXML bingoDAO = new BingoDAOXML();
-        if (bingoDAO.registrarBingo(bingo)) {
-          JOptionPane.showMessageDialog(vista, "Se ha registrado el juego correctamente");
-        } else {
-          JOptionPane.showMessageDialog(vista, "No se ha registrado el juego");
-        }
-        cerrarVentanaJuego();
-      }
+      jugarEnX();
       return;
     }
     if (tipoJuego.equals("Cuatro Esquinas")) {
@@ -246,7 +230,7 @@ public class ControladorJugando implements ActionListener {
               gana = false;
               i++;
             }
-          }
+          } 
         }
       }
       if (gana) {
@@ -284,39 +268,7 @@ public class ControladorJugando implements ActionListener {
     return ganadores;
   }
 
-  public ArrayList<Carton> jugarEnX() {
-    ArrayList<Carton> ganadores = new ArrayList<Carton>();
-    for (Carton actual : cartones) {
-      int[][] nums = actual.getValores();
-      boolean gana = true;
-      for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-          //System.out.println("i: " + i + " j: " + j);
-          if (i == 0 || i == 4) {
-            if (!jugados.contains(nums[i][j])) {//
-              gana = false;
-              j += 3;
-            }
-          }
-          if ((i == 1 || i == 3) && (j == 1 || j == 3)) { //
-            if (!jugados.contains(nums[i][j])) {
-              gana = false;
-            }
-          }
-          if (i == 2 && j == 2 ) { // si es el dato del medio
-            if (!jugados.contains(nums[i][j])) {
-              gana = false;
-            }
-          }
-        }
-      }
-      if (gana) {
-        ganadores.add(actual);
-        if (actual.getDuenio() != null) {
-          jugadoresGanadores.add(actual.getDuenio());
-        }
-      }
-    }
-    return ganadores;
+  public void jugarEnX() {
+
   }
 }
