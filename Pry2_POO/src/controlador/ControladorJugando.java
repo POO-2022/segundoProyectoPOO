@@ -31,6 +31,7 @@ public class ControladorJugando implements ActionListener {
   IniciarJuego vistaAnterior;
   ArrayList<Jugador> jugadoresGanadores;
   Bingo bingo;
+  int elPremio;
 
   public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
       IniciarJuego pVistaAnterior, String tipo, int premio) {
@@ -41,6 +42,7 @@ public class ControladorJugando implements ActionListener {
     vista.btCantarNumero.addActionListener(this);
     vista.btRegresarIniciarJuego.addActionListener(this);
     vista.setPremio(premio);
+    elPremio = premio; //es necesario para la funcion de notificacion al jugador ganador
     vista.setTipoJuego(tipo);
     vista.setCantidadJugadores(jugadores.size());
     vista.setCantidadCartones(cartones.size());
@@ -127,6 +129,18 @@ public class ControladorJugando implements ActionListener {
           ganador += carton.getID() + "-";
         }
         JOptionPane.showMessageDialog(vista, "El ganador es: " + ganador);
+        //notificando al jugador del gane
+        for(Carton g: jugarEnX()){
+          try{
+            String msg = "Saludos, "+g.getDuenio().getNombre()+", es un gusto notificarle que usted es el ganador "
+                    + "del juego de bingo en modalidad Juego en X, por un monto de "+elPremio+".\n\n ¡Felicitaciones! \n\n\nPor favor, envíenos su número de cuenta, "
+                    + "su cédula y cuantos organos le sirven para confirmar y enviarle su premio. \n¡Gracias por jugar!";
+            String asunto ="Ganador de juego de bingo";
+            Email e = new Email(g.getID(), g.getDuenio().getNombre(), g.getDuenio().getCorreo(), msg, asunto);
+          }catch(Exception e){
+              continue;
+          }  
+        }
         bingo.setNumCantados(jugados);
         bingo.setBolas(bolas);
         bingo.setJugadoresGanadores(jugadoresGanadores);
@@ -147,6 +161,18 @@ public class ControladorJugando implements ActionListener {
           ganadores += g.getID() + "-";
         }
         JOptionPane.showMessageDialog(null, "El ganador es: " + ganadores);
+        //notificando al jugador del gane
+        for(Carton g: cuatroEsquinas()){
+          try{
+            String msg = "Saludos, "+g.getDuenio().getNombre()+", es un gusto notificarle que usted es el ganador "
+                    + "del juego de bingo en modalidad Cuatro Esquinas, por un monto de "+elPremio+".\n\n ¡Felicitaciones! \n\n\nPor favor, envíenos su número de cuenta, "
+                    + "su cédula y cuantos organos le sirven para confirmar y enviarle su premio. \n¡Gracias por jugar!";
+            String asunto ="Ganador de juego de bingo";
+            Email e = new Email(g.getID(), g.getDuenio().getNombre(), g.getDuenio().getCorreo(), msg, asunto);
+          }catch(Exception e){
+              continue;
+          }  
+        }
         bingo.setNumCantados(jugados);
         bingo.setBolas(bolas);
         bingo.setJugadoresGanadores(jugadoresGanadores);
@@ -168,6 +194,18 @@ public class ControladorJugando implements ActionListener {
           ganadores += g.getID() + "-";
         }
         JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
+        //notificando a los ganadores mediante correo
+        for(Carton g: cartonLleno()){
+          try{
+            String msg = "Saludos, "+g.getDuenio().getNombre()+", es un gusto notificarle que usted es el ganador "
+                    + "del juego de bingo en modalidad Carton Lleno, por un monto de "+elPremio+".\n\n ¡Felicitaciones! \n\n\nPor favor, envíenos su número de cuenta, "
+                    + "su cédula y cuantos organos le sirven para confirmar y enviarle su premio. \n¡Gracias por jugar!";
+            String asunto ="Ganador de juego de bingo";
+            Email e = new Email(g.getID(), g.getDuenio().getNombre(), g.getDuenio().getCorreo(), msg, asunto);
+          }catch(Exception e){
+              continue;
+          }  
+        }
         bingo.setNumCantados(jugados);
         bingo.setJugadoresGanadores(jugadoresGanadores);
         BingoDAOXML bd = new BingoDAOXML();
@@ -188,6 +226,17 @@ public class ControladorJugando implements ActionListener {
           ganadores += g.getID() + "-";
         }
         JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
+        for(Carton g: jugarEnZ()){
+          try{
+            String msg = "Saludos, "+g.getDuenio().getNombre()+", es un gusto notificarle que usted es el ganador "
+                    + "del juego de bingo en modalidad Juego en Z, por un monto de "+elPremio+".\n\n ¡Felicitaciones! \n\n\nPor favor, envíenos su número de cuenta, "
+                    + "su cédula y cuantos organos le sirven para confirmar y enviarle su premio. \n¡Gracias por jugar!";
+            String asunto ="Ganador de juego de bingo";
+            Email e = new Email(g.getID(), g.getDuenio().getNombre(), g.getDuenio().getCorreo(), msg, asunto);
+          }catch(Exception e){
+              continue;
+          }  
+        }
         bingo.setNumCantados(jugados);
         bingo.setJugadoresGanadores(jugadoresGanadores);
         BingoDAOXML bd = new BingoDAOXML();
