@@ -14,7 +14,7 @@ import modelo.Bingo;
  */
 public interface BingoDAO {
   public abstract boolean registrarBingo(Bingo pBingo);
-  public abstract ArrayList<String> numerosCantados();
+  public abstract ArrayList<Integer> numerosCantados();
   public abstract ArrayList<String> listaFechasDeJuegos();
   public abstract ArrayList<String> listaTiposDeJuegos();
   public abstract ArrayList<String> listaJugadoresGanadores();

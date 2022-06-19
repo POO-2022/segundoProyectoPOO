@@ -29,6 +29,7 @@ public class ControladorEnviarCarton implements ActionListener {
   public ArrayList<Carton> cartones;
   public MenuPrincipal vistaAnterior;
   public ArrayList<Jugador> jugadores;
+
   public ControladorEnviarCarton(EnviarCarton pVistaEnviarCarton, ArrayList<Jugador> pJugadores,
       ArrayList<Carton> pCartones, MenuPrincipal pVista) {
     vista = pVistaEnviarCarton;
@@ -52,15 +53,20 @@ public class ControladorEnviarCarton implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
-      case "Enviar Cartón":
-        {
-            try {
-                enviarCarton();
-            } catch (MessagingException ex) {
-                Logger.getLogger(ControladorEnviarCarton.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(vista, "Error al enviar el carton");
-            }
+      case "Enviar Cartón": {
+        try {
+          String cantidadCartones = vista.jComboBoxCantidad.getSelectedItem().toString();
+          int cantidad = Integer.parseInt(cantidadCartones);
+          if (cantidad <= cartones.size()) {
+            enviarCarton();
+          } else {
+            JOptionPane.showMessageDialog(null, "No hay cartones suficientes");
+          }
+        } catch (MessagingException ex) {
+          Logger.getLogger(ControladorEnviarCarton.class.getName()).log(Level.SEVERE, null, ex);
+          JOptionPane.showMessageDialog(vista, "Error al enviar el carton");
         }
+      }
         break;
 
       case "Regresar":
@@ -73,7 +79,7 @@ public class ControladorEnviarCarton implements ActionListener {
   private void enviarCarton() throws MessagingException {
     String cantidadCartones = vista.jComboBoxCantidad.getSelectedItem().toString();
     int cantidad = Integer.parseInt(cantidadCartones);
-    String cedulaString =  vista.jComboBoxCedula.getSelectedItem().toString();
+    String cedulaString = vista.jComboBoxCedula.getSelectedItem().toString();
     int cedula = Integer.parseInt(cedulaString);
     for (Jugador jugador : jugadores) {
       int cedulaInt = jugador.getCedula();

@@ -70,9 +70,9 @@ public class BingoDAOXML implements BingoDAO {
       String ganadores = "";
       for (int i = 0; i < pBingo.getJugadoresGadores().size(); i++) {
         if (i == pBingo.getJugadoresGadores().size() - 1) {
-          ganadores += pBingo.getJugadoresGadores().get(i);
+          ganadores += pBingo.getJugadoresGadores().get(i).getCedula();
         } else {
-          ganadores += pBingo.getJugadoresGadores().get(i) + ",";
+          ganadores += pBingo.getJugadoresGadores().get(i).getCedula() + ",";
         }
       }
       String fecha = pBingo.getFecha();
@@ -109,9 +109,9 @@ public class BingoDAOXML implements BingoDAO {
   }
 
   @Override
-  public ArrayList<String> numerosCantados() {
+  public ArrayList<Integer> numerosCantados() {
     try {
-      ArrayList<String> listaNumerosCantados = new ArrayList<String>();
+      ArrayList<Integer> listaNumerosCantados = new ArrayList<Integer>();
       File file = new File("Bingos.xml");
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder db = dbf.newDocumentBuilder();
@@ -122,7 +122,7 @@ public class BingoDAOXML implements BingoDAO {
         Node node = nodeList.item(itr);
         if (node.getNodeType() == Node.ELEMENT_NODE) {
           String numerosCantados = doc.getElementsByTagName("numerosCantados").item(itr).getTextContent();
-          ArrayList<String> listaNumeros = eliminarComas(numerosCantados);
+          ArrayList<Integer> listaNumeros = eliminarComas(numerosCantados);
           for (int i = 0; i < listaNumeros.size(); i++) {
             listaNumerosCantados.add(listaNumeros.get(i));
           }
@@ -213,11 +213,12 @@ public class BingoDAOXML implements BingoDAO {
     }
     return null;
   }
-  private ArrayList<String> eliminarComas(String cadena) {
-    ArrayList<String> lista = new ArrayList<String>();
+  private ArrayList<Integer> eliminarComas(String cadena) {
+    ArrayList<Integer> lista = new ArrayList<Integer>();
     StringTokenizer st = new StringTokenizer(cadena, ",");
     while (st.hasMoreTokens()) {
-      lista.add(st.nextToken());
+      int numero = Integer.parseInt(st.nextToken());
+      lista.add(numero);
     }
     return lista;
   }

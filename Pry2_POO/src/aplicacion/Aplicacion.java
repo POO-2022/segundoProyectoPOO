@@ -5,6 +5,7 @@
 package aplicacion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import controlador.*;
 import vista.*;
@@ -26,8 +27,8 @@ public class Aplicacion {
     ArrayList<String> fechas = bingoDAO.listaFechasDeJuegos();
     ArrayList<String> tipo = bingoDAO.listaTiposDeJuegos();
     ArrayList<String> ganadores = bingoDAO.listaJugadoresGanadores();
-    ArrayList<String> bolasJugadas = bingoDAO.numerosCantados();
-    ArrayList<String> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
+    ArrayList<Integer> bolasJugadas = bingoDAO.numerosCantados();
+    ArrayList<Integer> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
     System.out.println(fechas.size());
     for (String f : fechas) {
       System.out.println(f);
@@ -41,12 +42,12 @@ public class Aplicacion {
       System.out.println(g);
     }
     System.out.println(bolasJugadas.size());
-    for (String b : bolasJugadas) {
+    for (int b : bolasJugadas) {
       System.out.println(b);
     }
     System.out.println("bolas mas usadas");
     System.out.println(bolasMasUsadas.size());
-    for (String b : bolasMasUsadas) {
+    for (int b : bolasMasUsadas) {
       System.out.println(b);
     }
     MenuPrincipal vista = new MenuPrincipal();
@@ -59,8 +60,9 @@ public class Aplicacion {
     controladorVentanaPrincipal.vista.setVisible(true);
     controladorVentanaPrincipal.vista.setLocationRelativeTo(null);  
   }
-  public static ArrayList<String> diezNumeroMasUsados(ArrayList<String> lista) {
-    ArrayList<String> listaDiez = new ArrayList<String>();
+  public static ArrayList<Integer> diezNumeroMasUsados(ArrayList<Integer> lista) {
+    ArrayList<Integer> listaDiez = new ArrayList<Integer>();
+    Collections.sort(lista);
     int contador = 0;
     for (int i = 0; i < lista.size(); i++) {
       int contadorNumero = 0;
@@ -73,7 +75,7 @@ public class Aplicacion {
         contador = contadorNumero;
         listaDiez.clear();
         listaDiez.add(lista.get(i));
-      } else if (contadorNumero == contador && !listaDiez.contains(lista.get(i))) {
+      } if (contadorNumero == contador && !listaDiez.contains(lista.get(i))) {
         listaDiez.add(lista.get(i));
       }
     }

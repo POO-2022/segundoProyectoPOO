@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import dao.BingoDAOXML;
+import dao.Email;
 import modelo.Carton;
 import modelo.Jugador;
 import modelo.TJuego;
@@ -127,6 +128,7 @@ public class ControladorJugando implements ActionListener {
         String ganador = "";
         for (Carton carton : jugarEnX()) {
           ganador += carton.getID() + "-";
+          jugadoresGanadores.add(g.getDuenio());
         }
         JOptionPane.showMessageDialog(vista, "El ganador es: " + ganador);
         //notificando al jugador del gane
@@ -159,6 +161,7 @@ public class ControladorJugando implements ActionListener {
         String ganadores = "";
         for (Carton g : cuatroEsquinas()) {
           ganadores += g.getID() + "-";
+          jugadoresGanadores.add(g.getDuenio());
         }
         JOptionPane.showMessageDialog(null, "El ganador es: " + ganadores);
         //notificando al jugador del gane
@@ -192,6 +195,7 @@ public class ControladorJugando implements ActionListener {
         String ganadores = "-";
         for (Carton g : cartonLleno()) {
           ganadores += g.getID() + "-";
+          jugadoresGanadores.add(g.getDuenio());
         }
         JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
         //notificando a los ganadores mediante correo
@@ -224,6 +228,7 @@ public class ControladorJugando implements ActionListener {
         String ganadores = "";
         for (Carton g : jugarEnZ()) {
           ganadores += g.getID() + "-";
+          jugadoresGanadores.add(g.getDuenio());
         }
         JOptionPane.showMessageDialog(null, "Ganador(es):\n" + ganadores);
         for(Carton g: jugarEnZ()){
@@ -270,9 +275,9 @@ public class ControladorJugando implements ActionListener {
       }
       if (gana) {
         ganadores.add(actual);
-        if (actual.getDuenio() != null) {
-          jugadoresGanadores.add(actual.getDuenio());
-        }
+        // if (actual.getDuenio() != null) {
+        //   jugadoresGanadores.add(actual.getDuenio());
+        // }
       }
     }
     return ganadores;
@@ -290,19 +295,28 @@ public class ControladorJugando implements ActionListener {
               gana = false;
             }
           }
-          if (i < 4 && 0 < i) {
+          if (i == 1 && j == 3) {
             if (!jugados.contains(nums[i][j])) {
               gana = false;
-              i++;
+            }
+          }
+          if (i == 2 && j == 2) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
+            }
+          }
+          if (i == 3 && j == 1) {
+            if (!jugados.contains(nums[i][j])) {
+              gana = false;
             }
           }
         }
       }
       if (gana) {
         ganadores.add(actual);
-        if (actual.getDuenio() != null) {
-          jugadoresGanadores.add(actual.getDuenio());
-        }
+        // if (actual.getDuenio() != null) {
+        //   jugadoresGanadores.add(actual.getDuenio());
+        // }
       }
     }
     return ganadores;
@@ -315,19 +329,19 @@ public class ControladorJugando implements ActionListener {
       boolean gana = true;
       for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-          if (i == 0 || i == 4) {
+          if ((i == 0 || i == 4) && (j == 0 || j == 4)) {
             if (!jugados.contains(nums[i][j])) {
               gana = false;
-              j += 3;
             }
           }
         }
       }
       if (gana) {
         ganadores.add(actual);
-        if (actual.getDuenio() != null) {
-          jugadoresGanadores.add(actual.getDuenio());
-        }
+        // if (actual.getDuenio() != null) {
+        //   System.out.println(actual.getDuenio().getNombre());
+        //   jugadoresGanadores.add(actual.getDuenio());
+        // }
       }
     }
     return ganadores;
@@ -341,10 +355,9 @@ public class ControladorJugando implements ActionListener {
       for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
           //System.out.println("i: " + i + " j: " + j);
-          if (i == 0 || i == 4) {
+          if ((i == 0 || i == 4) && (j == 0 || j == 4)) {
             if (!jugados.contains(nums[i][j])) {//
               gana = false;
-              j += 3;
             }
           }
           if ((i == 1 || i == 3) && (j == 1 || j == 3)) { //
@@ -361,9 +374,9 @@ public class ControladorJugando implements ActionListener {
       }
       if (gana) {
         ganadores.add(actual);
-        if (actual.getDuenio() != null) {
-          jugadoresGanadores.add(actual.getDuenio());
-        }
+        // if (actual.getDuenio() != null) {
+        //   jugadoresGanadores.add(actual.getDuenio());
+        // }
       }
     }
     return ganadores;

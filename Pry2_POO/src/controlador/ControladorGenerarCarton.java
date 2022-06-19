@@ -66,7 +66,6 @@ public class ControladorGenerarCarton implements ActionListener {
       }
     }
     cartones.clear();
-    
     int cantidadCartones = Integer.parseInt(vista.jtfCantidad.getText());
     if (cantidadCartones <= 500 && cantidadCartones > 0) {
       for (int i = 0; i < cantidadCartones; i++) {
