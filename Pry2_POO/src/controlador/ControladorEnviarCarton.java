@@ -86,7 +86,9 @@ public class ControladorEnviarCarton implements ActionListener {
           if (jugador.addCarton(carton)) {
             cantidad--;
             carton.setDuenio(jugador);
-            Email e=new Email(carton.getID(), jugador.getNombre(), address);
+            String mensaje = "Saludos, "+jugador.getNombre()+". Se le hace entrega de su correspondiente cartón para el juego de Bingo\n\n¡Suerte!";
+            String asunto="Entrega de cartón: "+carton.getID();
+            Email e=new Email(carton.getID(), jugador.getNombre(), address, mensaje, asunto);
           }
         }
 
