@@ -58,14 +58,16 @@ public class JugadorDAOCSV {
     // testCSV.readCSVFile();
   }
 
-  public ArrayList<Jugador> readCSVFile() {
+  public ArrayList<Jugador> jugadoresRegistrados() {
 
     ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-    try (Scanner scanner = new Scanner(new File("test.csv"));) {
+    try (Scanner scanner = new Scanner(new File("Jugadores.csv"));) {
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
-        //System.out.println(getRecordFromLine(line));
-        jugadores.add(getRecordFromLine(line));
+        Jugador jugador = getRecordFromLine(line);
+        if (jugador != null) {
+          jugadores.add(jugador);
+        }
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
@@ -83,25 +85,27 @@ public class JugadorDAOCSV {
       String cedula = "";
       String correo = "";
       while (rowScanner.hasNext()) {
+        String dato = rowScanner.next();
+        System.out.println(dato+"contador "+contador);
         if (contador == 0) {
-          nombre = rowScanner.next();
+          nombre = dato;
         }
         if (contador == 1) {
-          cedula = rowScanner.next();
+          cedula = dato;
+          System.out.println(cedula);
         }
         if (contador == 2) {
-          correo = rowScanner.next();
+          correo = dato;
         }
-        // String value = rowScanner.next();
-        // System.out.println(value);
-        // values.add(value);
+        contador++;
       }
-      int cedulaInt = Integer.parseInt(cedula);
-      values = new Jugador(nombre,correo, cedulaInt);
-      // values.setNombre(nombre);
-      // values.setCedula(cedulaInt);
-      // values.setCorreo(correo);
-      return values;
+      if (cedula.equals("")) {
+        return null;
+      } else {
+        int cedulaInt = Integer.parseInt(cedula);
+        values = new Jugador(nombre,correo, cedulaInt);
+        return values;
+      }
     }
   }
 }

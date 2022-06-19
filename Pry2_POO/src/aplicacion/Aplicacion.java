@@ -29,9 +29,9 @@ public class Aplicacion {
     ArrayList<String> tipo = bingoDAO.listaTiposDeJuegos();
     ArrayList<String> ganadores = bingoDAO.listaJugadoresGanadores();
     ArrayList<Integer> bolasJugadas = bingoDAO.numerosCantados();
-    ArrayList<Integer> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
-    //ArrayList<List<String>> jugadores = JugadorDAOCSV.readCSVFile();
-    jugadorDAO.readCSVFile();
+    //ArrayList<Integer> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
+    ArrayList<Jugador> jugadoresDAO = jugadorDAO.jugadoresRegistrados();
+    //System.out.print(jugadoresDAO.size());
     // System.out.println(fechas.size());
     // for (String f : fechas) {
     //   System.out.println(f);
@@ -55,11 +55,11 @@ public class Aplicacion {
     // }
     MenuPrincipal vista = new MenuPrincipal();
     ArrayList<Jugador> jugadores;
-    jugadores = new ArrayList<Jugador>();
-    jugadores.add(new Jugador("Andy Porras", "andyromero320@gmail.com", 703010147));
+    // jugadores = new ArrayList<Jugador>();
+    // jugadores.add(new Jugador("Andy Porras", "andyromero320@gmail.com", 703010147));
     ArrayList<Carton> carton;
     carton = new ArrayList<Carton>();
-    ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vista, jugadores, carton);
+    ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vista, jugadoresDAO, carton);
     controladorVentanaPrincipal.vista.setVisible(true);
     controladorVentanaPrincipal.vista.setLocationRelativeTo(null);  
   }
