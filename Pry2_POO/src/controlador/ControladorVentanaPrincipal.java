@@ -143,7 +143,10 @@ public class ControladorVentanaPrincipal implements ActionListener {
   public void generarEstadistica(){
       vista.setVisible(false);
       Estadistica estadistica = new Estadistica();
-      ControladorEstadistica controladorEstad = new ControladorEstadistica(estadistica, jugadores, cartones, vista);
+      BingoDAOXML daoBingo = new BingoDAOXML();
+      ArrayList<Integer> numeroCantados = daoBingo.numerosCantados();
+      ArrayList<String> configuracion = daoBingo.listaTiposDeJuegos();
+      ControladorEstadistica controladorEstad = new ControladorEstadistica(estadistica, vista, jugadores,numeroCantados,configuracion);
       controladorEstad.vista.setVisible(true);
       controladorEstad.vista.setLocationRelativeTo(null);
   }

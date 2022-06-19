@@ -24,32 +24,35 @@ public class Aplicacion {
    */
   public static void main(String[] args) {
     BingoDAO bingoDAO = new BingoDAOXML();
+    JugadorDAOCSV jugadorDAO = new JugadorDAOCSV();
     ArrayList<String> fechas = bingoDAO.listaFechasDeJuegos();
     ArrayList<String> tipo = bingoDAO.listaTiposDeJuegos();
     ArrayList<String> ganadores = bingoDAO.listaJugadoresGanadores();
     ArrayList<Integer> bolasJugadas = bingoDAO.numerosCantados();
     ArrayList<Integer> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
-    System.out.println(fechas.size());
-    for (String f : fechas) {
-      System.out.println(f);
-    }
-    System.out.println(tipo.size());
-    for (String t : tipo) {
-      System.out.println(t);
-    }
-    System.out.println(ganadores.size());
-    for (String g : ganadores) {
-      System.out.println(g);
-    }
-    System.out.println(bolasJugadas.size());
-    for (int b : bolasJugadas) {
-      System.out.println(b);
-    }
-    System.out.println("bolas mas usadas");
-    System.out.println(bolasMasUsadas.size());
-    for (int b : bolasMasUsadas) {
-      System.out.println(b);
-    }
+    //ArrayList<List<String>> jugadores = JugadorDAOCSV.readCSVFile();
+    jugadorDAO.readCSVFile();
+    // System.out.println(fechas.size());
+    // for (String f : fechas) {
+    //   System.out.println(f);
+    // }
+    // System.out.println(tipo.size());
+    // for (String t : tipo) {
+    //   System.out.println(t);
+    // }
+    // System.out.println(ganadores.size());
+    // for (String g : ganadores) {
+    //   System.out.println(g);
+    // }
+    // System.out.println(bolasJugadas.size());
+    // for (int b : bolasJugadas) {
+    //   System.out.println(b);
+    // }
+    // System.out.println("bolas mas usadas");
+    // System.out.println(bolasMasUsadas.size());
+    // for (int b : bolasMasUsadas) {
+    //   System.out.println(b);
+    // }
     MenuPrincipal vista = new MenuPrincipal();
     ArrayList<Jugador> jugadores;
     jugadores = new ArrayList<Jugador>();

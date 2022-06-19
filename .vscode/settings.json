@@ -5,6 +5,7 @@
         "Pry2_POO/lib/javax.mail-1.6.2.jar",
         "Pry2_POO/lib/javax.activation-1.2.0.jar",
         "Pry2_POO/lib/jcommon-1.0.23.jar",
-        "Pry2_POO/lib/jfreechart-1.0.19.jar"
+        "Pry2_POO/lib/jfreechart-1.0.19.jar",
+        "Pry2_POO/lib/opencsv-5.6.jar"
     ]
 }
