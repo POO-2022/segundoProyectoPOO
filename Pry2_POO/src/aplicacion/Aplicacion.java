@@ -26,6 +26,8 @@ public class Aplicacion {
     ArrayList<String> fechas = bingoDAO.listaFechasDeJuegos();
     ArrayList<String> tipo = bingoDAO.listaTiposDeJuegos();
     ArrayList<String> ganadores = bingoDAO.listaJugadoresGanadores();
+    ArrayList<String> bolasJugadas = bingoDAO.numerosCantados();
+    ArrayList<String> bolasMasUsadas = diezNumeroMasUsados(bolasJugadas);
     System.out.println(fechas.size());
     for (String f : fechas) {
       System.out.println(f);
@@ -38,6 +40,15 @@ public class Aplicacion {
     for (String g : ganadores) {
       System.out.println(g);
     }
+    System.out.println(bolasJugadas.size());
+    for (String b : bolasJugadas) {
+      System.out.println(b);
+    }
+    System.out.println("bolas mas usadas");
+    System.out.println(bolasMasUsadas.size());
+    for (String b : bolasMasUsadas) {
+      System.out.println(b);
+    }
     MenuPrincipal vista = new MenuPrincipal();
     ArrayList<Jugador> jugadores;
     jugadores = new ArrayList<Jugador>();
@@ -47,5 +58,25 @@ public class Aplicacion {
     ControladorVentanaPrincipal controladorVentanaPrincipal = new ControladorVentanaPrincipal(vista, jugadores, carton);
     controladorVentanaPrincipal.vista.setVisible(true);
     controladorVentanaPrincipal.vista.setLocationRelativeTo(null);  
+  }
+  public static ArrayList<String> diezNumeroMasUsados(ArrayList<String> lista) {
+    ArrayList<String> listaDiez = new ArrayList<String>();
+    int contador = 0;
+    for (int i = 0; i < lista.size(); i++) {
+      int contadorNumero = 0;
+      for (int j = 0; j < lista.size(); j++) {
+        if (lista.get(i).equals(lista.get(j))) {
+          contadorNumero++;
+        }
+      }
+      if (contadorNumero > contador) {
+        contador = contadorNumero;
+        listaDiez.clear();
+        listaDiez.add(lista.get(i));
+      } else if (contadorNumero == contador && !listaDiez.contains(lista.get(i))) {
+        listaDiez.add(lista.get(i));
+      }
+    }
+    return listaDiez;
   }
 }
