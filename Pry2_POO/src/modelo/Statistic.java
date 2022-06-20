@@ -23,7 +23,7 @@ public class Statistic {
     public Statistic(int pDato, String pDato_aux, int pCant){
       setDato(pDato);
       setDato_aux(pDato_aux);
-      setCant(cant);
+      setCant(pCant);
     }
 
     public int getDato() {
