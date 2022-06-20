@@ -23,7 +23,7 @@ import vista.RegistrarJugador;
 import vista.VerCarton;
 
 /**
- *
+ * clase que controla la ventana principal
  * @author Andy Porras
  */
 public class ControladorVentanaPrincipal implements ActionListener {
@@ -33,7 +33,12 @@ public class ControladorVentanaPrincipal implements ActionListener {
   public ArrayList<Carton> cartones;
   public BingoDAOXML daoBingo;
 
-
+  /**
+   * constructor de la clase
+   * @param pVista
+   * @param pJugadores
+   * @param pCartones
+   */
   public ControladorVentanaPrincipal(MenuPrincipal pVista, ArrayList<Jugador> pJugadores,
       ArrayList<Carton> pCartones) {
     this.vista = pVista;
@@ -49,7 +54,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
     this.vista.btGenerarEstadisticas.addActionListener(this);
   }
 
-
+  /*
+   * metodo que captura la opcion del boton
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()){
@@ -79,6 +86,10 @@ public class ControladorVentanaPrincipal implements ActionListener {
         break;  
     }
   }  
+
+  /*
+   * metodo que abre la ventana de enviar carton
+   */
   private void enviarCarton() {
     if(jugadores.size()==0){
         JOptionPane.showMessageDialog(null, "No hay jugadores registrados");
@@ -96,6 +107,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
 
   }
 
+  /*
+   * metodo que abre la ventana de ver carton
+   */
   private void abrirVentanaVerCarton() {
     vista.setVisible(false);
     VerCarton vistaVerCarton = new VerCarton();
@@ -104,6 +118,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
     controladorVerCarton.vista.setLocationRelativeTo(null);
   }
 
+  /*
+   * metodo que abre la ventana de generar cartones
+   */
   private void abrirVentanaGenerarCartones() {
     vista.setVisible(false);
     GenerarCarton vistaGenerarCartones = new GenerarCarton();
@@ -113,6 +130,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
   }
 
 
+  /*
+   * metodo que abre la ventana de registrar jugador
+   */
   private void registrarJugador() {
     vista.setVisible(false);
     RegistrarJugador vistaRegistrarJugador = new RegistrarJugador();
@@ -121,7 +141,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
     controladorRegistrarJugador.vista.setLocationRelativeTo(null);
   }
 
-
+  /*
+   * metodo que abre la ventana de iniciar juego
+   */
   private void abrirVentanaIniciarJuego() {
     if(jugadores.size()==0){     
       JOptionPane.showMessageDialog(null, "No hay jugadores registrados", "Error", JOptionPane.ERROR_MESSAGE);
@@ -138,6 +160,9 @@ public class ControladorVentanaPrincipal implements ActionListener {
     }   
   }
   
+  /*
+   * metodo que abre la ventana de generar estadisticas
+   */
   public void generarEstadistica(){
       vista.setVisible(false);
       Estadistica estadistica = new Estadistica();
@@ -150,6 +175,10 @@ public class ControladorVentanaPrincipal implements ActionListener {
       controladorEstad.vista.setLocationRelativeTo(null);
   }
   
+  /*
+   * metodo que cierra la ventana principal, elimina las imagenes de los cartones
+   * y cierra el programa en su totalidad
+   */
   public void cerrarVentanaLogin(){
     this.vista.dispose();
     //limpieza de la carpeta Cartones

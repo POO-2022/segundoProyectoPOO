@@ -6,23 +6,22 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import vista.MenuPrincipal;
-import vista.Estadistica;
-import modelo.Bingo;
-import modelo.Carton;
-import modelo.Statistic;
-import modelo.Jugador;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+
+import modelo.Statistic;
+import vista.Estadistica;
+import vista.MenuPrincipal;
 /**
- *
+ * clase que controla la estadistica
  * @author Kevin Salazar
  * @version 1.0
  */
@@ -58,12 +57,17 @@ public class ControladorEstadistica implements ActionListener{
     this.DBPartidas = getConfigPartidas(cpt);
   }
   
-  public ArrayList<Statistic> getTop10Nums(ArrayList <Integer> lista){
+  /**
+   * metodo que genera el top 10 de numeros
+   * @param pLista lista con todos los numeros más cantados
+   * @return lista con los top 10 numeros
+   */
+  public ArrayList<Statistic> getTop10Nums(ArrayList <Integer> pLista){
     ArrayList<Statistic> res = new ArrayList<Statistic>();  
     for(int i = 1; i<=75; i++){
         Statistic nuevo = new Statistic(i, null, 0);
         int contador = 0;
-        for(Integer actual: lista){
+        for(Integer actual: pLista){
             if(actual == i){
                 contador++;
             }
@@ -109,24 +113,29 @@ public class ControladorEstadistica implements ActionListener{
     return result;        
   }
   
-  public ArrayList<Statistic> getConfigPartidas(ArrayList<String> configs){
+  /*
+   *  metodo que genera el top de las configuraciones de partidas
+   * @param pConfigs lista con el historial de configuracion de partidas
+   * @return lista con los top de las configuraciones de partidas
+   */
+  public ArrayList<Statistic> getConfigPartidas(ArrayList<String> pConfigs){
     ArrayList<Statistic> res = new ArrayList<Statistic>();
   
     int contX=0;
     int contZ=0;
     int contL=0;
     int contE=0;
-    for(int i = 0; i<configs.size(); i++){
-      if(configs.get(i).equals("Z")){
+    for(int i = 0; i<pConfigs.size(); i++){
+      if(pConfigs.get(i).equals("Z")){
         contZ++;
       }
-      if(configs.get(i).equals("X")){
+      if(pConfigs.get(i).equals("X")){
         contX++;
       }
-      if(configs.get(i).equals("L")){
+      if(pConfigs.get(i).equals("L")){
         contL++;
       }
-      if(configs.get(i).equals("E")){
+      if(pConfigs.get(i).equals("E")){
         contE++;
       }
     }
@@ -138,6 +147,12 @@ public class ControladorEstadistica implements ActionListener{
     return res;
   }
   
+  /*
+   * metodo que genera el top de los ganadores
+   * @param pGanadores lista con el historial de ganadores
+   * @return lista con los top de los ganadores
+   * 
+   */
   public ArrayList<Statistic> getGanadores(ArrayList<String> ganadores){
     ArrayList<Statistic> res = new ArrayList<Statistic>();
     
@@ -166,6 +181,9 @@ public class ControladorEstadistica implements ActionListener{
     return res;
   }
   
+  /*
+   * metodo que captura el evento del boton consultar
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -185,6 +203,9 @@ public class ControladorEstadistica implements ActionListener{
     }
   }
   
+  /*
+   * metodo que genera la consulta solicitada
+   */
   public void generarConsulta(){
       String tipo = vista.getTipoConsulta();
       if(tipo.equals("Números más cantados")){  
@@ -206,7 +227,10 @@ public class ControladorEstadistica implements ActionListener{
       return;
   }
   
-  //estadistica de los 10 numeros mas cantados en partidas
+  /** 
+   * estadistica de los 10 numeros mas cantados en partidas
+   * 
+   * */
   public void numsMasCantados(){
     JFreeChart grafico = null;  
     DefaultCategoryDataset datos = new DefaultCategoryDataset();
@@ -226,7 +250,9 @@ public class ControladorEstadistica implements ActionListener{
     return;
   }
   
-  //historial de cuantas partidas de cada tipo se han hecho
+  /*
+   * historial de cuantas partidas de cada tipo se han hecho
+   */
   public void histConfigPartidas(){
     JFreeChart grafico = null;  
     DefaultPieDataset pastel = new DefaultPieDataset();
@@ -249,14 +275,18 @@ public class ControladorEstadistica implements ActionListener{
     return;
   }
   
-  //estadistica de cantidad de partidas hechas por fecha
+  /*
+   * estadistica de cantidad de partidas hechas por fecha
+   */
   //sin implementar...
   public void cantPartXFecha(){
     JOptionPane.showMessageDialog(null, "Opción no disponible...\nDisculpe los inconvenientes", "Atención", JOptionPane.WARNING_MESSAGE);
     return;
   }
   
-  //top 5 ganadores
+  /*
+   * top 5 ganadores
+   */
   public void top5Ganadores(){   
     JFreeChart grafico = null;  
     DefaultPieDataset pastel = new DefaultPieDataset();
@@ -276,6 +306,10 @@ public class ControladorEstadistica implements ActionListener{
     return;
   }
   
+  /*
+   * cerrar ventana de estadistica
+   * y abre la ventana principal
+   */
   private void cerrarVentanaEstadistica() {
     this.vista.setVisible(false);
     this.vistaAnterior.setVisible(true);

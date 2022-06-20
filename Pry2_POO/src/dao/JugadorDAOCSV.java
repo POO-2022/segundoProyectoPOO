@@ -8,10 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import javax.mail.search.StringTerm;
 
 import modelo.Jugador;
 
@@ -83,13 +80,11 @@ public class JugadorDAOCSV {
       String correo = "";
       while (rowScanner.hasNext()) {
         String dato = rowScanner.next();
-        System.out.println(dato+"contador "+contador);
         if (contador == 0) {
           nombre = dato;
         }
         if (contador == 1) {
           cedula = dato;
-          System.out.println(cedula);
         }
         if (contador == 2) {
           correo = dato;

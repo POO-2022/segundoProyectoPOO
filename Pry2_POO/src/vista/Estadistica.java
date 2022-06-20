@@ -102,7 +102,6 @@ public class Estadistica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btConsultarActionPerformed
 
     /**

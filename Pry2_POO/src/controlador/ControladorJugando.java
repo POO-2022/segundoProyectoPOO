@@ -20,8 +20,9 @@ import vista.IniciarJuego;
 import vista.Jugando;
 
 /**
- *
+ * clase que controla la ventana de juego 
  * @author Andy Porras
+ * @author KEVIN SALAZAR
  */
 public class ControladorJugando implements ActionListener {
   Jugando vista;
@@ -33,28 +34,39 @@ public class ControladorJugando implements ActionListener {
   ArrayList<Jugador> jugadoresGanadores;
   Bingo bingo;
   int elPremio;
-
+  /*
+   * constructor de la clase
+   * @param pJugador ventana de juego
+   * @param pJugadores lista de jugadores
+   * @param pCartones lista de cartones
+   * @param pVistaAnterior ventana anterior
+   * @param pTipo tipo de juego
+   * @param pPremio premio del juego
+   */
   public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
-      IniciarJuego pVistaAnterior, String tipo, int premio) {
+      IniciarJuego pVistaAnterior, String pTipo, int pPremio) {
     vista = pJugador;
     this.jugadores = pJugadores;
     this.cartones = pCartones;
     this.vistaAnterior = pVistaAnterior;
     vista.btCantarNumero.addActionListener(this);
     vista.btRegresarIniciarJuego.addActionListener(this);
-    vista.setPremio(premio);
-    elPremio = premio; //es necesario para la funcion de notificacion al jugador ganador
-    vista.setTipoJuego(tipo);
+    vista.setPremio(pPremio);
+    elPremio = pPremio; //es necesario para la funcion de notificacion al jugador ganador
+    vista.setTipoJuego(pTipo);
     vista.setCantidadJugadores(jugadores.size());
     vista.setCantidadCartones(cartones.size());
     jugados = new ArrayList<Integer>();
     bolas = new ArrayList<Bola>();
     jugadoresGanadores = new ArrayList<Jugador>();
     crearBolas();
-    bingo = new Bingo(tipoJuego(tipo), premio);
+    bingo = new Bingo(tipoJuego(pTipo), pPremio);
     bingo.setBolas(bolas);
   }
 
+  /*
+   * metodo que transforma el tipo de juego en un objeto de tipo TJuego
+   */
   private TJuego tipoJuego(String tipo) {
     if (tipo.equals("Jugar en X")) {
       return TJuego.JUGAR_EN_X;
@@ -67,6 +79,10 @@ public class ControladorJugando implements ActionListener {
     }
   }
 
+  /*
+   * metodo que captura el evento del boton de cantar numero
+   * y el boton de regresar a la ventana de inicio de juego
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -81,7 +97,9 @@ public class ControladorJugando implements ActionListener {
     }
   }
 
-  // se crean las 75 bolas del juego
+  /*
+   * metodo que crea las bolas para el juego
+   */
   private void crearBolas() {
     for (int i = 1; i <= 75; i++) {
       Bola b = new Bola(i);
@@ -89,12 +107,17 @@ public class ControladorJugando implements ActionListener {
     }
   }
 
+  /*
+   * metodo que cierra la ventana de juego
+   */
   private void cerrarVentanaJuego() {
     vista.setVisible(false);
     vistaAnterior.setVisible(true);
   }
 
-  // Esta funcion es "la maquina" que canta los numeros
+  /*
+   * Esta funcion es "la maquina" que canta los numeros
+   */
   private void cantarNumero() {
     int num;
     boolean numeroCantado = false;
@@ -120,7 +143,9 @@ public class ControladorJugando implements ActionListener {
     //cantarNumero();
   }
 
-  // validar si ya hay ganador
+  /*
+   * metodo que verifica si hay ganador
+   */
   public void hayGanador() {
     String tipoJuego = vista.elTipoDeJuego.getText();
     if (tipoJuego.equals("Jugar en X")) {
@@ -258,7 +283,10 @@ public class ControladorJugando implements ActionListener {
 
   }
 
-  // Funciones para validar los cartones ganadores
+  /*
+   * metodo que retorna los cartones llenos ganadores
+   * @return lista de cartones llenos ganadores
+   */
   public ArrayList<Carton> cartonLleno() {
     ArrayList<Carton> ganadores = new ArrayList<Carton>();
     for (Carton actual : cartones) {
@@ -283,6 +311,10 @@ public class ControladorJugando implements ActionListener {
     return ganadores;
   }
 
+  /*
+   * metodo que retorna los cartones ganadores en juego en z
+   * @return lista de cartones ganadores en juego en z
+   */
   public ArrayList<Carton> jugarEnZ() {
     ArrayList<Carton> ganadores = new ArrayList<Carton>();
     for (Carton actual : cartones) {
@@ -322,6 +354,10 @@ public class ControladorJugando implements ActionListener {
     return ganadores;
   }
 
+  /*
+   * metodo que retorna los cartones ganadores en juego en cuatro esquinas
+   * @return lista de cartones ganadores en juego en cuatro esquinas
+   */
   public ArrayList<Carton> cuatroEsquinas() {
     ArrayList<Carton> ganadores = new ArrayList<Carton>();
     for (Carton actual : cartones) {
@@ -347,6 +383,10 @@ public class ControladorJugando implements ActionListener {
     return ganadores;
   }
 
+  /*
+   * metodo que retorna los cartones ganadores en juego en x
+   * @return lista de cartones ganadores en juego en x
+   */
   public ArrayList<Carton> jugarEnX() {
     ArrayList<Carton> ganadores = new ArrayList<Carton>();
     for (Carton actual : cartones) {

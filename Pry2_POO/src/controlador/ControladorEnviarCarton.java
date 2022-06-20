@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import javax.mail.MessagingException;
 
 /**
- *
+ * clase que controla el envio de cartones
  * @author Andy Porras
  */
 public class ControladorEnviarCarton implements ActionListener {
@@ -30,6 +30,13 @@ public class ControladorEnviarCarton implements ActionListener {
   public MenuPrincipal vistaAnterior;
   public ArrayList<Jugador> jugadores;
 
+  /**
+   * constructor de la clase
+   * @param vista
+   * @param cartones
+   * @param vistaAnterior
+   * @param jugadores
+   */
   public ControladorEnviarCarton(EnviarCarton pVistaEnviarCarton, ArrayList<Jugador> pJugadores,
       ArrayList<Carton> pCartones, MenuPrincipal pVista) {
     vista = pVistaEnviarCarton;
@@ -41,6 +48,9 @@ public class ControladorEnviarCarton implements ActionListener {
     actualizarVista();
   }
 
+  /**
+   * metodo que actualiza la vista
+   */
   private void actualizarVista() {
     // vista.cbJugadores.removeAllItems();
     for (Jugador jugador : jugadores) {
@@ -50,6 +60,10 @@ public class ControladorEnviarCarton implements ActionListener {
     }
   }
 
+  /**
+   * metodo que envia el carton
+   * o regresa al menu principal
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -76,6 +90,9 @@ public class ControladorEnviarCarton implements ActionListener {
     }
   }
 
+  /*
+   * metodo que envia el carton
+   */
   private void enviarCarton() throws MessagingException {
     String cantidadCartones = vista.jComboBoxCantidad.getSelectedItem().toString();
     int cantidad = Integer.parseInt(cantidadCartones);
@@ -94,7 +111,8 @@ public class ControladorEnviarCarton implements ActionListener {
             carton.setDuenio(jugador);
             String mensaje = "Saludos, "+jugador.getNombre()+". Se le hace entrega de su correspondiente cartón para el juego de Bingo\n\n¡Suerte!";
             String asunto="Entrega de cartón: "+carton.getID();
-            Email e=new Email(carton.getID(), jugador.getNombre(), address, mensaje, asunto);
+            // Email e=new Email(carton.getID(), jugador.getNombre(), address, mensaje, asunto);
+            new Email(carton.getID(), jugador.getNombre(), address, mensaje, asunto);
           }
         }
 

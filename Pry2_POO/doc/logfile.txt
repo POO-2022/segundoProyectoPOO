@@ -1,0 +1,449 @@
+Project documentation
+<---- javadoc command: ---->
+D:\Descargas\Aplicaciones\Bluej\jdk\bin\javadoc.exe
+-sourcepath
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO
+-source
+11
+-classpath
+D:\Descargas\Aplicaciones\Bluej\lib\bluejcore.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-jupiter-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-jupiter-api-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-jupiter-engine-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-jupiter-migrationsupport-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-jupiter-params-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-commons-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-console-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-console-standalone-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-engine-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-launcher-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-reporting-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-runner-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-suite-api-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-platform-testkit-1.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-quickcheck-core-0.9.jar;D:\Descargas\Aplicaciones\Bluej\lib\junit-vintage-engine-5.5.2.jar;D:\Descargas\Aplicaciones\Bluej\lib\hamcrest-core-1.3.jar;D:\Descargas\Aplicaciones\Bluej\lib\hamcrest-library-1.3.jar;D:\Descargas\Aplicaciones\Bluej\lib\lang-stride.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.base.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.controls.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.fxml.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.graphics.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.media.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.properties.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.swing.jar;D:\Descargas\Aplicaciones\Bluej\lib\javafx\lib\javafx.web.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyectos 1\Gestor de Solicitudes de Crédito\lib\json-20140107.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyectos 1\javax.activation-1.2.0.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyectos 1\javax.mail.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyectos 1\json-20140107.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyectos 1\primerProyectoPOO\Gestor de Solicitudes de Crédito\lib\pdfbox-app-2.0.26.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Laboratorios\Tarea opcional\Patron Singleton\lib\jsoup-1.8.3.jar;D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO
+-d
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\doc
+-encoding
+windows-1252
+-charset
+windows-1252
+-doctitle
+Pry2_POO
+-windowtitle
+Pry2_POO
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-link
+https://docs.oracle.com/en/java/javase/11/docs/api/
+src.dao
+src.aplicacion
+src.controlador
+src.modelo
+src.vista
+<---- end of javadoc command ---->
+Loading source files for package src.dao...
+Loading source files for package src.aplicacion...
+Loading source files for package src.controlador...
+Loading source files for package src.modelo...
+Loading source files for package src.vista...
+Constructing Javadoc information...
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\BingoDAO.java:9: error: package modelo does not exist
+import modelo.Bingo;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\BingoDAO.java:16: error: cannot find symbol
+  public abstract boolean registrarBingo(Bingo pBingo);
+                                         ^
+  symbol:   class Bingo
+  location: interface BingoDAO
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\BingoDAOXML.java:27: error: package modelo does not exist
+import modelo.Bingo;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\BingoDAOXML.java:43: error: cannot find symbol
+  public boolean registrarBingo(Bingo pBingo) {
+                                ^
+  symbol:   class Bingo
+  location: class BingoDAOXML
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\JugadorDAOCSV.java:16: error: package modelo does not exist
+import modelo.Jugador;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\JugadorDAOCSV.java:30: error: cannot find symbol
+  public void registrarJugador(Jugador pJugador) throws FileNotFoundException {
+                               ^
+  symbol:   class Jugador
+  location: class JugadorDAOCSV
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\JugadorDAOCSV.java:54: error: cannot find symbol
+  public ArrayList<Jugador> jugadoresRegistrados() {
+                   ^
+  symbol:   class Jugador
+  location: class JugadorDAOCSV
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\dao\JugadorDAOCSV.java:76: error: cannot find symbol
+  private Jugador getRecordFromLine(String pLine) {
+          ^
+  symbol:   class Jugador
+  location: class JugadorDAOCSV
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\aplicacion\Aplicacion.java:10: error: package controlador does not exist
+import controlador.*;
+^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\aplicacion\Aplicacion.java:11: error: package vista does not exist
+import vista.*;
+^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\aplicacion\Aplicacion.java:12: error: package modelo does not exist
+import modelo.*;
+^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\aplicacion\Aplicacion.java:13: error: package dao does not exist
+import dao.*;
+^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:13: error: package modelo does not exist
+import modelo.Carton;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:14: error: package modelo does not exist
+import modelo.Jugador;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:15: error: package vista does not exist
+import vista.EnviarCarton;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:16: error: package vista does not exist
+import vista.MenuPrincipal;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:17: error: package dao does not exist
+import dao.Email;
+          ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:28: error: cannot find symbol
+  public EnviarCarton vista;
+         ^
+  symbol:   class EnviarCarton
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:29: error: cannot find symbol
+  public ArrayList<Carton> cartones;
+                   ^
+  symbol:   class Carton
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:30: error: cannot find symbol
+  public MenuPrincipal vistaAnterior;
+         ^
+  symbol:   class MenuPrincipal
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:31: error: cannot find symbol
+  public ArrayList<Jugador> jugadores;
+                   ^
+  symbol:   class Jugador
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:33: error: cannot find symbol
+  public ControladorEnviarCarton(EnviarCarton pVistaEnviarCarton, ArrayList<Jugador> pJugadores,
+                                 ^
+  symbol:   class EnviarCarton
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:33: error: cannot find symbol
+  public ControladorEnviarCarton(EnviarCarton pVistaEnviarCarton, ArrayList<Jugador> pJugadores,
+                                                                            ^
+  symbol:   class Jugador
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:34: error: cannot find symbol
+      ArrayList<Carton> pCartones, MenuPrincipal pVista) {
+                ^
+  symbol:   class Carton
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEnviarCarton.java:34: error: cannot find symbol
+      ArrayList<Carton> pCartones, MenuPrincipal pVista) {
+                                   ^
+  symbol:   class MenuPrincipal
+  location: class ControladorEnviarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:12: error: package vista does not exist
+import vista.MenuPrincipal;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:13: error: package vista does not exist
+import vista.Estadistica;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:14: error: package modelo does not exist
+import modelo.Bingo;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:15: error: package modelo does not exist
+import modelo.Carton;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:16: error: package modelo does not exist
+import modelo.Statistic;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:17: error: package modelo does not exist
+import modelo.Jugador;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:18: error: package org.jfree.chart does not exist
+import org.jfree.chart.ChartFactory;
+                      ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:19: error: package org.jfree.chart does not exist
+import org.jfree.chart.ChartPanel;
+                      ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:20: error: package org.jfree.chart does not exist
+import org.jfree.chart.JFreeChart;
+                      ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:21: error: package org.jfree.chart.plot does not exist
+import org.jfree.chart.plot.PlotOrientation;
+                           ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:22: error: package org.jfree.data.category does not exist
+import org.jfree.data.category.DefaultCategoryDataset;
+                              ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:23: error: package org.jfree.data.general does not exist
+import org.jfree.data.general.DefaultPieDataset;
+                             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:30: error: cannot find symbol
+  public ArrayList<Statistic> DBGanadores;  
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:31: error: cannot find symbol
+  public ArrayList<Statistic> DBNumeros; 
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:32: error: cannot find symbol
+  public ArrayList<Statistic> DBPartidas;  
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:33: error: cannot find symbol
+  public Estadistica vista;
+         ^
+  symbol:   class Estadistica
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:37: error: cannot find symbol
+  public MenuPrincipal vistaAnterior;
+         ^
+  symbol:   class MenuPrincipal
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:47: error: cannot find symbol
+  public ControladorEstadistica(Estadistica pVistaEstadistica, MenuPrincipal pVistaAnterior, 
+                                ^
+  symbol:   class Estadistica
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:47: error: cannot find symbol
+  public ControladorEstadistica(Estadistica pVistaEstadistica, MenuPrincipal pVistaAnterior, 
+                                                               ^
+  symbol:   class MenuPrincipal
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:61: error: cannot find symbol
+  public ArrayList<Statistic> getTop10Nums(ArrayList <Integer> lista){
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:112: error: cannot find symbol
+  public ArrayList<Statistic> getConfigPartidas(ArrayList<String> configs){
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorEstadistica.java:141: error: cannot find symbol
+  public ArrayList<Statistic> getGanadores(ArrayList<String> ganadores){
+                   ^
+  symbol:   class Statistic
+  location: class ControladorEstadistica
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:13: error: package dao does not exist
+import dao.BingoDAOXML;
+          ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:15: error: package modelo does not exist
+import modelo.Carton;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:16: error: package vista does not exist
+import vista.GenerarCarton;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:17: error: package vista does not exist
+import vista.MenuPrincipal;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:18: error: package vista does not exist
+import vista.VistaCarton;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:26: error: cannot find symbol
+  public GenerarCarton vista;
+         ^
+  symbol:   class GenerarCarton
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:27: error: cannot find symbol
+  public ArrayList<Carton> cartones;
+                   ^
+  symbol:   class Carton
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:28: error: cannot find symbol
+  public BingoDAOXML daoBingo;
+         ^
+  symbol:   class BingoDAOXML
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:29: error: cannot find symbol
+  public MenuPrincipal vistaAnterior;
+         ^
+  symbol:   class MenuPrincipal
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:31: error: cannot find symbol
+  public ControladorGenerarCarton(GenerarCarton pVistaGenerarCartones, ArrayList<Carton> pCartones,
+                                  ^
+  symbol:   class GenerarCarton
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:31: error: cannot find symbol
+  public ControladorGenerarCarton(GenerarCarton pVistaGenerarCartones, ArrayList<Carton> pCartones,
+                                                                                 ^
+  symbol:   class Carton
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:32: error: cannot find symbol
+      MenuPrincipal pVistaAnterior) {
+      ^
+  symbol:   class MenuPrincipal
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorGenerarCarton.java:95: error: cannot find symbol
+  private boolean existeCarton(Carton carton) {
+                               ^
+  symbol:   class Carton
+  location: class ControladorGenerarCarton
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:13: error: package dao does not exist
+import dao.BingoDAOXML;
+          ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:15: error: package modelo does not exist
+import modelo.Bingo;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:16: error: package modelo does not exist
+import modelo.Carton;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:17: error: package modelo does not exist
+import modelo.Jugador;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:18: error: package vista does not exist
+import vista.IniciarJuego;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:19: error: package vista does not exist
+import vista.Jugando;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:20: error: package vista does not exist
+import vista.MenuPrincipal;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:28: error: cannot find symbol
+  public IniciarJuego vista;
+         ^
+  symbol:   class IniciarJuego
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:29: error: cannot find symbol
+  public ArrayList<Jugador> jugadores;
+                   ^
+  symbol:   class Jugador
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:30: error: cannot find symbol
+  public ArrayList<Carton> cartones;
+                   ^
+  symbol:   class Carton
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:31: error: cannot find symbol
+  public BingoDAOXML daoBingo;
+         ^
+  symbol:   class BingoDAOXML
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:32: error: cannot find symbol
+  public Bingo bingo;
+         ^
+  symbol:   class Bingo
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:33: error: cannot find symbol
+  public MenuPrincipal vistaAnterior;
+         ^
+  symbol:   class MenuPrincipal
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:35: error: cannot find symbol
+  public ControladorIniciarJuego(IniciarJuego pVistaIniciarJuego, ArrayList<Jugador> pJugadores,
+                                 ^
+  symbol:   class IniciarJuego
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:35: error: cannot find symbol
+  public ControladorIniciarJuego(IniciarJuego pVistaIniciarJuego, ArrayList<Jugador> pJugadores,
+                                                                            ^
+  symbol:   class Jugador
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:36: error: cannot find symbol
+      ArrayList<Carton> pCartones,MenuPrincipal pVistaAnterior) {
+                ^
+  symbol:   class Carton
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorIniciarJuego.java:36: error: cannot find symbol
+      ArrayList<Carton> pCartones,MenuPrincipal pVistaAnterior) {
+                                  ^
+  symbol:   class MenuPrincipal
+  location: class ControladorIniciarJuego
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:12: error: package dao does not exist
+import dao.BingoDAOXML;
+          ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:13: error: package dao does not exist
+import dao.Email;
+          ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:14: error: package modelo does not exist
+import modelo.Carton;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:15: error: package modelo does not exist
+import modelo.Jugador;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:16: error: package modelo does not exist
+import modelo.TJuego;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:17: error: package modelo does not exist
+import modelo.Bingo;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:18: error: package modelo does not exist
+import modelo.Bola;
+             ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:19: error: package vista does not exist
+import vista.IniciarJuego;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:20: error: package vista does not exist
+import vista.Jugando;
+            ^
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:27: error: cannot find symbol
+  Jugando vista;
+  ^
+  symbol:   class Jugando
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:28: error: cannot find symbol
+  ArrayList<Jugador> jugadores;
+            ^
+  symbol:   class Jugador
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:29: error: cannot find symbol
+  ArrayList<Carton> cartones;
+            ^
+  symbol:   class Carton
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:30: error: cannot find symbol
+  ArrayList<Bola> bolas;
+            ^
+  symbol:   class Bola
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:32: error: cannot find symbol
+  IniciarJuego vistaAnterior;
+  ^
+  symbol:   class IniciarJuego
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:33: error: cannot find symbol
+  ArrayList<Jugador> jugadoresGanadores;
+            ^
+  symbol:   class Jugador
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:34: error: cannot find symbol
+  Bingo bingo;
+  ^
+  symbol:   class Bingo
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:37: error: cannot find symbol
+  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
+                            ^
+  symbol:   class Jugando
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:37: error: cannot find symbol
+  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
+                                                        ^
+  symbol:   class Jugador
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:37: error: cannot find symbol
+  public ControladorJugando(Jugando pJugador, ArrayList<Jugador> pJugadores, ArrayList<Carton> pCartones,
+                                                                                       ^
+  symbol:   class Carton
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:38: error: cannot find symbol
+      IniciarJuego pVistaAnterior, String tipo, int premio) {
+      ^
+  symbol:   class IniciarJuego
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:58: error: cannot find symbol
+  private TJuego tipoJuego(String tipo) {
+          ^
+  symbol:   class TJuego
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:262: error: cannot find symbol
+  public ArrayList<Carton> cartonLleno() {
+                   ^
+  symbol:   class Carton
+  location: class ControladorJugando
+D:\TEC UNIVERSIDAD\Documentos\Tercer Semestre\POO\Proyecto 2\segundoProyectoPOO\Pry2_POO\src\controlador\ControladorJugando.java:286: error: cannot find symbol
+  public ArrayList<Carton> jugarEnZ() {
+                   ^
+  symbol:   class Carton
+  location: class ControladorJugando
+100 errors

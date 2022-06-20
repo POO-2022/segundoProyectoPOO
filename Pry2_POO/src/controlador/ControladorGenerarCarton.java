@@ -18,7 +18,7 @@ import vista.MenuPrincipal;
 import vista.VistaCarton;
 
 /**
- *
+ * clase que controla la ventana de generar carton
  * @author Andy Porras
  */
 public class ControladorGenerarCarton implements ActionListener {
@@ -28,6 +28,12 @@ public class ControladorGenerarCarton implements ActionListener {
   public BingoDAOXML daoBingo;
   public MenuPrincipal vistaAnterior;
 
+  /**
+   * constructor de la clase
+   * @param vista
+   * @param cartones
+   * @param vistaAnterior
+   */
   public ControladorGenerarCarton(GenerarCarton pVistaGenerarCartones, ArrayList<Carton> pCartones,
       MenuPrincipal pVistaAnterior) {
     this.vista = pVistaGenerarCartones;
@@ -37,6 +43,9 @@ public class ControladorGenerarCarton implements ActionListener {
     vista.btRegresarMP.addActionListener(this);
   }
 
+  /*
+   * metodo que captura la opcion del boton
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -54,6 +63,9 @@ public class ControladorGenerarCarton implements ActionListener {
     }
   }
 
+  /**
+   * metodo que genera los cartones
+   */
   private void generarCartones() {
   try{
     //limpieza de la carpeta Cartones
@@ -92,6 +104,11 @@ public class ControladorGenerarCarton implements ActionListener {
     }
   }
 
+  /**
+   * metodo que valida si el carton ya existe
+   * @param carton carton a validar
+   * @return true si el carton ya existe, false si no existe
+   */
   private boolean existeCarton(Carton carton) {
     for (Carton cartonAux : cartones) {
       if (cartonAux.getID() == carton.getID()) {

@@ -23,7 +23,7 @@ import vista.MenuPrincipal;
 import vista.VerCarton;
 
 /**
- *
+ *  clase que controla la ventana de ver carton
  * @author Andy Porras
  */
 public class ControladorVerCarton implements ActionListener {
@@ -32,6 +32,12 @@ public class ControladorVerCarton implements ActionListener {
   public ArrayList<Carton> cartones;
   public BingoDAOXML daoBingo;
   public MenuPrincipal vistaAnterior;
+  /*
+   * constructor de la clase
+   * @param pVistaVerCarton
+   * @param pCartones
+   * @param pVistaAnterior
+   */
   public ControladorVerCarton(VerCarton pVistaVerCarton, ArrayList<Carton> pCartones, MenuPrincipal pVistaAnterior) {
     this.vista = pVistaVerCarton;
     vistaAnterior = pVistaAnterior;
@@ -39,6 +45,9 @@ public class ControladorVerCarton implements ActionListener {
     vista.btRegresarMP.addActionListener(this);
     vista.btVerCarton.addActionListener(this);
   }
+  /*
+   * metodo que captura la opcion del boton
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -60,6 +69,10 @@ public class ControladorVerCarton implements ActionListener {
 
     }
   }
+  /*
+   * metodo para ver la imagen del carton
+   * @throws IOException
+   */
   private void verCarton() throws IOException {
     String id = vista.tfIdentificador.getText();
     try{

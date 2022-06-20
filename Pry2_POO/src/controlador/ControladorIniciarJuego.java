@@ -8,10 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import dao.BingoDAOXML;
-import javax.swing.JOptionPane;
 import modelo.Bingo;
 import modelo.Carton;
 import modelo.Jugador;
@@ -20,7 +19,8 @@ import vista.Jugando;
 import vista.MenuPrincipal;
 
 /**
- *
+ * clase que controla el inicio del juego
+ * @author KEVIN SALAZAR
  * @author Andy Porras
  */
 public class ControladorIniciarJuego implements ActionListener {
@@ -32,6 +32,13 @@ public class ControladorIniciarJuego implements ActionListener {
   public Bingo bingo;
   public MenuPrincipal vistaAnterior;
 
+  /**
+   * constructor de la clase
+   * @param vista
+   * @param jugadores
+   * @param cartones
+   * @param vistaAnterior
+   */
   public ControladorIniciarJuego(IniciarJuego pVistaIniciarJuego, ArrayList<Jugador> pJugadores,
       ArrayList<Carton> pCartones,MenuPrincipal pVistaAnterior) {
     this.vista = pVistaIniciarJuego;
@@ -42,6 +49,9 @@ public class ControladorIniciarJuego implements ActionListener {
     this.vista.btJugarBingo.addActionListener(this);
   }
 
+  /*
+   * metodo que captura la opcion del boton
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -56,6 +66,10 @@ public class ControladorIniciarJuego implements ActionListener {
     }
   }
 
+  /**
+   * cierra la ventana de inicio del juego
+   * y abre la ventana de jugar
+   */
   private void ventanaJuego() {
     //validar que el premio esté correctamente escrito}
     int premio = vista.getPremio();
@@ -71,6 +85,10 @@ public class ControladorIniciarJuego implements ActionListener {
     controladorJugando.vista.setLocationRelativeTo(null);
   }
 
+  /**
+   * cierra la ventana de inicio del juego
+   * y abre la ventana de menu principal
+   */
   private void cerrarVentanaIniciarJuego() {
     vista.setVisible(false);
     vistaAnterior.setVisible(true);
