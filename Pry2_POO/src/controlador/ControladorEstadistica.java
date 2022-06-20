@@ -6,6 +6,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import vista.MenuPrincipal;
@@ -30,11 +31,10 @@ public class ControladorEstadistica implements ActionListener{
   public ArrayList<Statistic> DBNumeros; 
   public ArrayList<Statistic> DBPartidas;  
   public Estadistica vista;
-  public ArrayList<Jugador> top5Ganadores; //se pueden recuperar de la base de datos csv
+  public ArrayList<String> top5Ganadores; //se pueden recuperar de la base de datos csv
   public ArrayList<Integer> top10Nums;
   public ArrayList<String> cantPartidas;
   public MenuPrincipal vistaAnterior;
-  public JFreeChart grafico;
   
   /**
    * 
@@ -45,7 +45,7 @@ public class ControladorEstadistica implements ActionListener{
    * @param cpt lista con un historial de configuracion de partidas
    */
   public ControladorEstadistica(Estadistica pVistaEstadistica, MenuPrincipal pVistaAnterior, 
-          ArrayList<Jugador> t5g, ArrayList<Integer> t10n, ArrayList<String> cpt) {
+          ArrayList<String> t5g, ArrayList<Integer> t10n, ArrayList<String> cpt) {
     this.vista = pVistaEstadistica; 
     this.vistaAnterior = pVistaAnterior;
     this.vista.btConsultar.addActionListener(this);
@@ -53,10 +53,119 @@ public class ControladorEstadistica implements ActionListener{
     this.top10Nums = t10n;
     this.top5Ganadores = t5g;
     this.cantPartidas = cpt;
-    this.DBNumeros = new ArrayList<Statistic>();
-    this.DBGanadores = new ArrayList<Statistic>();
-    this.DBPartidas = new ArrayList<Statistic>();
+    this.DBNumeros = getTop10Nums(t10n);
+    this.DBGanadores = getGanadores(t5g);
+    this.DBPartidas = getConfigPartidas(cpt);
   }
+  
+  public ArrayList<Statistic> getTop10Nums(ArrayList <Integer> lista){
+    ArrayList<Statistic> res = new ArrayList<Statistic>();  
+    for(int i = 1; i<=75; i++){
+        Statistic nuevo = new Statistic(i, null, 0);
+        int contador = 0;
+        for(Integer actual: lista){
+            if(actual == i){
+                contador++;
+            }
+        }
+        nuevo.setCant(contador);
+        res.add(nuevo);
+    }
+    
+    //Seleccion de los 10 numeros más cantados
+    int dataN[] = new int[res.size()];
+    ArrayList<Statistic> resultado = new ArrayList<Statistic>();
+    int n = 0;
+    for(Statistic s: res){
+      dataN[n] = s.getCant();
+      n++;
+    }
+    dataN = bubbleSort(dataN);
+    
+    for(int i = 74; i>74-10; i--){
+      for(Statistic s: res){
+        if(dataN[i] == s.getCant()){
+          resultado.add(s);  
+          res.remove(s);
+          break;
+          
+        }
+      }
+    }
+    return resultado;
+  }
+  
+  //algoritmo de ordenamiento burbuja
+  public int[] bubbleSort(int arr[]){
+    int result[]=arr;
+    int n = result.length;
+    for (int i = 0; i < n - 1; i++)
+      for (int j = 0; j < n - i - 1; j++)
+        if (result[j] > result[j + 1]) {
+          int temp = result[j];
+          result[j] = result[j + 1];
+          result[j + 1] = temp;
+        }
+    return result;        
+  }
+  
+  public ArrayList<Statistic> getConfigPartidas(ArrayList<String> configs){
+    ArrayList<Statistic> res = new ArrayList<Statistic>();
+  
+    int contX=0;
+    int contZ=0;
+    int contL=0;
+    int contE=0;
+    for(int i = 0; i<configs.size(); i++){
+      if(configs.get(i).equals("Z")){
+        contZ++;
+      }
+      if(configs.get(i).equals("X")){
+        contX++;
+      }
+      if(configs.get(i).equals("L")){
+        contL++;
+      }
+      if(configs.get(i).equals("E")){
+        contE++;
+      }
+    }
+    res.add(new Statistic(0,"Juego en X",contX));
+    res.add(new Statistic(0,"Juego en Z",contZ));
+    res.add(new Statistic(0,"Carton Lleno",contL));
+    res.add(new Statistic(0,"Cuatro Esquinas",contE));
+    
+    return res;
+  }
+  
+  public ArrayList<Statistic> getGanadores(ArrayList<String> ganadores){
+    ArrayList<Statistic> res = new ArrayList<Statistic>();
+    
+    for(int i = 0; i<ganadores.size(); i++){
+      Statistic nuevo = new Statistic (0, "", 0);
+      int contador=0;
+      String actual=ganadores.get(i);
+      nuevo.setDato_aux(actual);
+      for(String s: ganadores){
+        if(actual.equals(s)){
+          contador++;
+        }   
+      }
+      
+      for(int a=0; a<ganadores.size(); a++){
+        String obj = ganadores.get(a);  
+        if(obj.equals(actual)){
+            ganadores.remove(obj);
+        }  
+      }
+      
+      nuevo.setCant(contador);
+      res.add(nuevo);
+    }
+    
+    return res;
+  }
+  
   @Override
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
@@ -99,23 +208,44 @@ public class ControladorEstadistica implements ActionListener{
   
   //estadistica de los 10 numeros mas cantados en partidas
   public void numsMasCantados(){
+    JFreeChart grafico = null;  
     DefaultCategoryDataset datos = new DefaultCategoryDataset();
-    for(int i = 0; i<DBNumeros.size(); i++){
-        datos.addValue(DBNumeros.get(i).getCant(), "Grafica 1", DBNumeros.get(i).getDato_aux());
-    }grafico = ChartFactory.createBarChart("Grafica Prueba", "Eje X", "Eje Y", datos, PlotOrientation.VERTICAL, true, true, false);
-    mostrar(grafico);
+    String name = "Grafica";
+    for(Statistic actual: DBNumeros){
+        int dato = actual.getCant();
+        String txt = String.valueOf(actual.getDato());
+        datos.addValue(dato, "Grafica 1", txt);
+    }
+    grafico = ChartFactory.createBarChart("Grafica Prueba", "Eje X", "Eje Y", datos, PlotOrientation.VERTICAL, true, true, false);
+    ChartPanel cPanel = new ChartPanel(grafico);
+    JFrame informacion = new JFrame("Grafica");
+    informacion.getContentPane().add(cPanel);
+    informacion.pack();
+    informacion.setVisible(true); 
+    informacion.setLocationRelativeTo(null);
     return;
   }
   
   //historial de cuantas partidas de cada tipo se han hecho
   public void histConfigPartidas(){
-    DefaultCategoryDataset datos = new DefaultCategoryDataset();
+    JFreeChart grafico = null;  
     DefaultPieDataset pastel = new DefaultPieDataset();
-    for(int i = 0; i<DBPartidas.size(); i++){
-        datos.addValue(DBPartidas.get(i).getCant(), "Grafica 1", DBPartidas.get(i).getDato_aux());
+    String name = "Grafica";
+    System.out.println(DBPartidas.size());
+    /*for(int i = 0; i<DBPartidas.size(); i++){
+      pastel.setValue(DBPartidas.get(i).getDato_aux(), DBPartidas.get(i).getCant());      
+    }*/
+    for(Statistic modo:DBPartidas){
+      pastel.setValue(modo.getDato_aux(), modo.getCant());
+      System.out.println(modo.getDato_aux()+":"+ modo.getCant());
     }
     grafico = ChartFactory.createPieChart("GraficaPrueba", pastel, true, true, false);
-    mostrar(grafico);
+    ChartPanel cPanel = new ChartPanel(grafico);
+    JFrame informacion = new JFrame("Grafica");
+    informacion.getContentPane().add(cPanel);
+    informacion.pack();
+    informacion.setVisible(true); 
+    informacion.setLocationRelativeTo(null);
     return;
   }
   
@@ -128,25 +258,23 @@ public class ControladorEstadistica implements ActionListener{
   
   //top 5 ganadores
   public void top5Ganadores(){   
+    JFreeChart grafico = null;  
     DefaultPieDataset pastel = new DefaultPieDataset();
     for(int i = 0; i<DBGanadores.size(); i++){
+        if(i==5){ //solo son necesarios 5 ganadores
+            break;
+        }
         pastel.setValue(DBGanadores.get(i).getDato_aux(), DBGanadores.get(i).getCant());
     }
     grafico = ChartFactory.createPieChart3D("GraficaPrueba", pastel, true, true, false);
-    mostrar(grafico);
-    return;
-  }
-  
-  //muestra el gráfico en pantalla
-  public void mostrar(JFreeChart pGrafico){
-    ChartPanel cPanel = new ChartPanel(pGrafico);
+    ChartPanel cPanel = new ChartPanel(grafico);
     JFrame informacion = new JFrame("Grafica");
     informacion.getContentPane().add(cPanel);
     informacion.pack();
     informacion.setVisible(true); 
     informacion.setLocationRelativeTo(null);
+    return;
   }
-  
   
   private void cerrarVentanaEstadistica() {
     this.vista.setVisible(false);

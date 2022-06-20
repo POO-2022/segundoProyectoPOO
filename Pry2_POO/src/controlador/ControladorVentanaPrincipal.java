@@ -96,7 +96,6 @@ public class ControladorVentanaPrincipal implements ActionListener {
 
   }
 
-
   private void abrirVentanaVerCarton() {
     vista.setVisible(false);
     VerCarton vistaVerCarton = new VerCarton();
@@ -104,7 +103,6 @@ public class ControladorVentanaPrincipal implements ActionListener {
     controladorVerCarton.vista.setVisible(true);
     controladorVerCarton.vista.setLocationRelativeTo(null);
   }
-
 
   private void abrirVentanaGenerarCartones() {
     vista.setVisible(false);
@@ -146,7 +144,8 @@ public class ControladorVentanaPrincipal implements ActionListener {
       BingoDAOXML daoBingo = new BingoDAOXML();
       ArrayList<Integer> numeroCantados = daoBingo.numerosCantados();
       ArrayList<String> configuracion = daoBingo.listaTiposDeJuegos();
-      ControladorEstadistica controladorEstad = new ControladorEstadistica(estadistica, vista, jugadores,numeroCantados,configuracion);
+      ArrayList<String> ganadores = daoBingo.listaJugadoresGanadores();
+      ControladorEstadistica controladorEstad = new ControladorEstadistica(estadistica, vista, ganadores ,numeroCantados,configuracion);
       controladorEstad.vista.setVisible(true);
       controladorEstad.vista.setLocationRelativeTo(null);
   }
