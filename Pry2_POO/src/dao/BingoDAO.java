@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import modelo.Bingo;
 
 /**
- *
+ * Clase padre que permite la gestion de los datos de los bingos en un archivo XML
  * @author Andy Porras
  */
 public interface BingoDAO {

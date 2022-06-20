@@ -5,7 +5,7 @@
 package modelo;
 
 /**
- *
+ * Enumerado que representa los tipos de juegos de Bingos
  * @author Ing. Kevin
  */
 public enum TJuego {

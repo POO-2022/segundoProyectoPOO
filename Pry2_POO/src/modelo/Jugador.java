@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.ArrayList;
 /**
- *
+ * Clase que representa un jugador de un juego de Bingo
  * @author Kevin Salazar
  * @version 1.0
  */
@@ -17,7 +17,9 @@ public class Jugador {
   private String correo;
   private int cedula;
   private ArrayList<Carton> cartones;
-  
+  /*
+   * Constructor de la clase Jugador
+   */
   public Jugador(){
     cartones = new ArrayList<Carton>();
   }

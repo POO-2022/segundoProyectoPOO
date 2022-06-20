@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ * Clase que representa un juego de Bingo
+ * con metodos como: cantarNumero, enviarCartoAJugador
  * @author Andy Porras
  */
 public class Bingo {
@@ -23,7 +24,11 @@ public class Bingo {
   private int premio;
   private ArrayList<Jugador> ganadores;
   private ArrayList<Bola> bolas;
-  
+  /*
+   * Constructor de la clase Bingo
+   * @param pTipo tipo de juego
+   * @param pPremio premio del juego
+   */
   public Bingo(TJuego pTipo, int pPremio) {
     setTipJuego(pTipo);
     setPremio(pPremio);
@@ -37,6 +42,9 @@ public class Bingo {
     crearBolas();
   }
 
+  /*
+   * Funcion que canta un numero
+   */
   public int cantarNumero() {
     int num = (int) (Math.random() *(76-1)) + 1;
     boolean numeroCantado = false;
@@ -143,7 +151,7 @@ public class Bingo {
         Bola b = new Bola(i);
         bolas.add(b);
     }
-}
+  }
   public ArrayList<Bola> getBolasJugadas(){
     ArrayList<Bola> bolasJugadas = new ArrayList<Bola>();
     for(Bola act: bolas){

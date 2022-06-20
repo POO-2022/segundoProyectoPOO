@@ -16,30 +16,21 @@ import javax.mail.search.StringTerm;
 import modelo.Jugador;
 
 /**
- *
+ *  Clase que permite la gestion de los datos de los jugadores en un archivo CSV
+ * tiene funciones para leer, escribir los datos de los jugadores en un archivo CSV
  * @author Andy Porras
  */
 public class JugadorDAOCSV {
   public JugadorDAOCSV() {
   }
-
+  /*
+   * Funcion que regitra los datos del jugador en un archivo CSV
+   * @param pJugador objeto de tipo Jugador
+   */
   public void registrarJugador(Jugador pJugador) throws FileNotFoundException {
     try (PrintWriter writer = new PrintWriter(new File("Jugadores.csv"))) {
 
       StringBuilder sb = new StringBuilder();
-      // sb.append("id");
-      // sb.append(',');
-      // sb.append("Name");
-      // sb.append(',');
-      // sb.append("Address");
-      // sb.append('\n');
-
-      // sb.append("101");
-      // sb.append(',');
-      // sb.append("John Doe");
-      // sb.append(',');
-      // sb.append("Las Vegas");
-      // sb.append('\n');
       sb.append(pJugador.getNombre());
       sb.append(',');
       sb.append(pJugador.getCedula());
@@ -54,12 +45,13 @@ public class JugadorDAOCSV {
     } catch (FileNotFoundException e) {
       System.out.println(e.getMessage());
     }
-    // JugadorDAOCSV testCSV = new JugadorDAOCSV();
-    // testCSV.readCSVFile();
+
   }
-
+  /**
+   * Funcion que lee los datos de los jugadores de un archivo CSV
+   * @return lista de objetos de tipo Jugador
+   */
   public ArrayList<Jugador> jugadoresRegistrados() {
-
     ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
     try (Scanner scanner = new Scanner(new File("Jugadores.csv"));) {
       while (scanner.hasNextLine()) {
@@ -76,9 +68,14 @@ public class JugadorDAOCSV {
     return jugadores;
   }
 
-  private Jugador getRecordFromLine(String line) {
+  /**
+   * Funcion que obtiene un objeto de tipo Jugador a partir de una linea de un archivo CSV
+   * @param pLinea linea de un archivo CSV
+   * @return objeto de tipo Jugador
+   */
+  private Jugador getRecordFromLine(String pLine) {
     Jugador values;
-    try (Scanner rowScanner = new Scanner(line)) {
+    try (Scanner rowScanner = new Scanner(pLine)) {
       rowScanner.useDelimiter(",");
       int contador = 0;
       String nombre = "";

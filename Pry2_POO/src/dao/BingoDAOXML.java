@@ -27,11 +27,18 @@ import org.w3c.dom.NodeList;
 import modelo.Bingo;
 
 /**
- *
+ *  Clase que permite la gestion de los datos de los bingos en un archivo XML
+ *  tiene funciones para leer, escribir los datos de los bingos en un archivo XML
+ *  es hija de la clase BingoDAO
  * @author Andy Porras
  */
 public class BingoDAOXML implements BingoDAO {
-
+  
+  /*
+   * Funcion que regitra los datos del bingo en un archivo XML
+   * @param pBingo objeto de tipo Bingo
+   * @return true si el registro fue exitoso, false en caso contrario
+   */
   @Override
   public boolean registrarBingo(Bingo pBingo) {
     File file = new File("Bingos.xml");
@@ -108,6 +115,10 @@ public class BingoDAOXML implements BingoDAO {
     return false;
   }
 
+  /*
+   * Funcion que lee los datos del bingo de un archivo XML
+   * @return ArrayList con los numeros cantados del bingo
+   */
   @Override
   public ArrayList<Integer> numerosCantados() {
     try {
@@ -135,6 +146,10 @@ public class BingoDAOXML implements BingoDAO {
     return null;
   }
 
+  /*
+   * Funcion que lee los datos del bingo de un archivo XML
+   * @return ArrayList con las fechas de los bingos
+   */
   @Override
   public ArrayList<String> listaFechasDeJuegos() {
     try {
@@ -162,6 +177,10 @@ public class BingoDAOXML implements BingoDAO {
     return null;
   }
 
+  /*
+   * Funcion que lee los datos del bingo de un archivo XML
+   * @return ArrayList con los tipos de juegos de los bingos
+   */
   @Override
   public ArrayList<String> listaTiposDeJuegos() {
     try {
@@ -188,6 +207,10 @@ public class BingoDAOXML implements BingoDAO {
     return null;
   }
 
+  /*
+   * Funcion que lee los datos del bingo de un archivo XML
+   * @return ArrayList con los ganadores de los bingos
+   */
   @Override
   public ArrayList<String> listaJugadoresGanadores() {
     try {
@@ -213,6 +236,11 @@ public class BingoDAOXML implements BingoDAO {
     }
     return null;
   }
+  /*
+   * Elimina las comas de una cadena de texto
+   * @param cadena cadena de texto
+   * @return ArrayList con los numeros de la cadena sin las comas
+   */
   private ArrayList<Integer> eliminarComas(String cadena) {
     ArrayList<Integer> lista = new ArrayList<Integer>();
     StringTokenizer st = new StringTokenizer(cadena, ",");

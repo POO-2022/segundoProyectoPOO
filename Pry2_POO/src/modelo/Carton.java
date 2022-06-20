@@ -19,6 +19,9 @@ public class Carton {
   private boolean asignado;
   Jugador duenio;
   
+  /*
+   * Constructor de la clase Carton
+   */
   public Carton(){
     asignado = false;
     jugados = new ArrayList<Bola>();
@@ -35,7 +38,9 @@ public class Carton {
     return duenio;
   }
   
-  //se asigna automáticamente
+  /*
+   * genera un ID para el carton
+   */
   public void setID(){
     ID="";
     Random r = new Random();  
@@ -50,7 +55,9 @@ public class Carton {
       return ID;
   }
 
-  //se asignan automáticamente con random
+  /*
+   * genera los valores para el carton
+   */
   public void setValores(){
     int valor;  
     //columna 1 = valores entre 1 y 15

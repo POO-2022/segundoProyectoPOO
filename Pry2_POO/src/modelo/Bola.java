@@ -6,13 +6,15 @@ package modelo;
 
 
 /**
- *
+ * Clase que representa una bola de un juego de Bingo
  * @author Ing. Kevin
  */
 public class Bola {
   private int num;
   private boolean jugado;
-  
+  /*
+   * Constructor de la clase Bola
+   */
   public Bola(int pNum){
     num=pNum;  
     jugado = false;
